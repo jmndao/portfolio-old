@@ -1,0 +1,290 @@
+:root {
+    --nav-height: 50px;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+    height: 100vh;
+    width: 100vw;
+}
+
+
+/* Navigation Bar */
+
+ul.ant-menu-overflow.ant-menu.ant-menu-root.ant-menu-horizontal.ant-menu-light.myNav {
+    display: flex;
+    justify-content: center;
+    height: var(--nav-height);
+    font-size: 1.1rem;
+    align-items: center;
+    box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.ant-menu-vertical .ant-menu-item,
+.ant-menu-vertical-left .ant-menu-item,
+.ant-menu-vertical-right .ant-menu-item,
+.ant-menu-inline .ant-menu-item,
+.ant-menu-vertical .ant-menu-submenu-title,
+.ant-menu-vertical-left .ant-menu-submenu-title,
+.ant-menu-vertical-right .ant-menu-submenu-title,
+.ant-menu-inline .ant-menu-submenu-title {
+    width: fit-content;
+}
+
+.home-app {
+    /* position: absolute;
+    top: calc(var(--nav-height) - 1px); */
+    padding-bottom: 4.5rem;
+    background-color: #eee;
+    width: 100%;
+    height: 100%;
+}
+
+.home-app .ant-col:first-child {
+    display: flex;
+    align-items: center;
+    padding-top: 2rem;
+}
+
+.home-image {
+    height: inherit;
+}
+
+.app-header {
+    font-size: 1.8rem;
+    color: #232B2B;
+    font-weight: 600;
+    padding: 20px 2rem;
+    width: 100%;
+}
+
+.app-header.light {
+    color: #eee;
+}
+
+.app-header.left {
+    text-align: left;
+}
+
+.app-header.right {
+    text-align: right;
+}
+
+.app-header .under {
+    width: 100%;
+    height: 3px;
+    background-color: #eee;
+}
+
+.app-header .under .right {
+    text-align: right;
+}
+
+@media screen and (max-width: 768px) {
+    .home-app {
+        padding-top: 3rem;
+    }
+    .banner-info p:first-child {
+        font-size: 1.2rem;
+        font-weight: 600;
+    }
+    .banner-info .changing-text {
+        font-size: 1.2rem !important;
+        font-weight: 600;
+    }
+    .home-image {
+        height: 450px;
+    }
+}
+
+.banner-info {
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
+    color: #232B2B;
+}
+
+.banner-info p:first-child {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.banner-info .changing-text {
+    font-size: 2.5rem !important;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.banner-info p:nth-child(n+2) {
+    font-size: 22px;
+    margin-left: 20px;
+}
+
+.banner-info p:last-child {
+    margin-left: 40px;
+}
+
+.banner-info p:last-child span {
+    font-size: 4rem;
+    margin-right: 10px;
+}
+
+.banner-info [aria-label='linkedin'] {
+    color: blue;
+}
+
+.banner-info [aria-label='github'] {
+    color: black;
+}
+
+
+/* Download Button */
+
+.download-cv {
+    width: 100%;
+    text-align: center;
+}
+
+.download-cv button {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+
+/* About Section */
+
+.about-section {
+    padding: 1.7rem 0;
+    font-size: 18px;
+    color: #eee;
+    background-color: #232B2B;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+}
+
+@media (min-width: 576px) {
+    .about-section .ant-col-sm-24 {
+        display: unset;
+        flex: unset;
+    }
+}
+
+@media (min-width: 768px) {
+    .project-section .ant-col-md-7 {
+        max-width: unset;
+    }
+}
+
+.about-section .avatar-big {
+    width: 150px;
+    height: 150px;
+}
+
+.proficiency {
+    color: #eee;
+    font-size: 18px;
+}
+
+.ant-card.ant-card-bordered:hover {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+    transition: box-shadow 200ms ease;
+}
+
+
+/* Contact Section */
+
+.contact-section {
+    background-color: #232B2B;
+}
+
+.ant-form-item-label label {
+    color: #eee !important;
+    font-size: 18px !important;
+}
+
+.ant-row.ant-form-item.center {
+    text-align: center;
+}
+
+.align-form {
+    display: flex;
+    align-items: center;
+}
+
+.after-form-text {
+    font-size: 18px;
+    color: #eee;
+    border-left: 5px solid #eee;
+    border-color: #1890ff;
+    padding-left: 15px;
+}
+
+
+/* App Footer */
+
+.app-footer {
+    color: #232B2B;
+}
+
+.center-footer {
+    text-align: center;
+}
+
+.app-footer .socials {
+    height: auto;
+}
+
+.app-footer .socials svg {
+    height: 40px;
+    width: 40px;
+    margin: 5px 10px;
+}
+
+
+/* Utils */
+
+.p-1 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.sm-ml-1 {
+    margin-left: 5px !important;
+}
+
+.pt-1 {
+    padding-top: 1rem;
+}
+
+.py-2 {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.m-1 {
+    margin: 1rem;
+}
+
+.mt-1 {
+    margin-top: 1rem;
+}
