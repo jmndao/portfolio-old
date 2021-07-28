@@ -1,0 +1,59 @@
+:root {
+    --light: #eee;
+    --timeline-link: #1890ff;
+    --header-link-hover: #232B2B;
+    --header-link-hover-icon: #eee;
+    --timeline-date: #ced4da;
+    --divider: #495057;
+    --bg: #232B2B;
+    --bg-project: #fff;
+    --bg-rgb: 14, 18, 18;
+    --nav-height: 50px;
+}
+
+.project-screen {
+    padding-bottom: 4.5rem;
+    padding-top: 4.5rem;
+    background-color: var(--light);
+    margin-top: calc(var(--nav-height) - 1px);
+    height: 100%;
+    width: 100%;
+}
+
+.project-screen-list .ant-list {
+    background-color: var(--bg-project);
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+    border-radius: 5px;
+}
+
+.project-screen .ant-list-pagination {
+    padding-bottom: 20px;
+}
+
+.project-screen-board {
+    width: 100%;
+    background-color: var(--bg);
+    text-align: center;
+    color: var(--light);
+    opacity: 0.7;
+    border-radius: 5px;
+}
+
+.project-screen-board h1 {
+    color: var(--light) !important;
+    font-size: 3rem;
+    padding: 20px;
+}
+
+@media screen and (max-width: 665px) {
+    .project-screen-board h1 {
+        font-size: 1.8rem;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .project-screen-board h1 {
+        font-size: 2.1rem;
+    }
+}

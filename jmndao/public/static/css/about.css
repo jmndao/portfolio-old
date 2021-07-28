@@ -1,0 +1,181 @@
+:root {
+    --light: #eee;
+    --timeline-link: #1890ff;
+    --header-link-hover: #232B2B;
+    --header-link-hover-icon: #eee;
+    --timeline-date: #ced4da;
+    --divider: #495057;
+    --bg: #232B2B;
+    --bg-rgb: 14, 18, 18;
+    /* --bgLight: radial-gradient(var(--bg),transparent,var(--purple) 130%); */
+    --gray: grey;
+    --comment: #555;
+}
+
+.about-screen {
+    background-color: var(--bg);
+}
+
+.about-screen:before {
+    content: "";
+    margin-top: 30px;
+    display: block;
+    position: fixed;
+    top: 49px;
+    left: 0;
+    width: 40%;
+    height: 100%;
+    background-image: linear-gradient( 270deg, var(--bg), rgba(var(--bg-rgb), 0) 90%), linear-gradient( 180deg, var(--bg), rgba(var(--bg-rgb), 0) 60%), url(../images/me.jpg);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: cover;
+}
+
+
+/* .about-image {
+    background-color: #232B2B;
+    height: 100vw;
+    width: 100%;
+    margin-top: 49px;
+} */
+
+.static-about-container {
+    padding-top: 200px;
+    padding-left: 30%;
+    color: #eee;
+}
+
+.about-screen .ant-avatar-lg {
+    width: 100px;
+    height: 100px;
+}
+
+.about-screen .ant-timeline {
+    color: #eee;
+    font-size: 16px;
+    font-variant: tabular-nums;
+    line-height: 1.5715;
+    font-feature-settings: 'tnum', "tnum";
+}
+
+.about-screen .ant-timeline-item {
+    font-size: 16px;
+}
+
+.about-screen .ant-divider-horizontal {
+    width: 30%;
+    min-width: 30%;
+    margin: 24px auto;
+    background-color: var(--divider);
+}
+
+.about-screen .app-header {
+    padding-top: 5px !important;
+}
+
+.under-frac {
+    width: 25px;
+    height: 3px;
+    background-color: #eee;
+}
+
+.about-institution {
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: var(--timeline-link);
+}
+
+.about-institution:hover {
+    color: var(--timeline-link);
+}
+
+.timeline-date {
+    text-align: right;
+    color: var(--timeline-date);
+    font-size: 11px;
+}
+
+.work-experience-list {
+    color: var(--light) !important;
+}
+
+.work-experience-list:first-child {
+    margin-left: 50px;
+}
+
+.work-experience-list li:first-child {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--light);
+}
+
+.work-experience-list h4,
+.work-experience-list h3 {
+    color: var(--light) !important;
+}
+
+.about-screen .center-footer {
+    color: var(--light);
+}
+
+.about-screen .app-footer .ant-divider-horizontal {
+    width: 100%;
+}
+
+@media screen and (max-width: 578px) {
+    html,
+    body {
+        font-size: 13px;
+    }
+    .about-screen:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-image: linear-gradient( 270deg, var(--bg), rgba(var(--bg-rgb), 0) 80%), linear-gradient( 0deg, var(--bg), rgba(var(--bg-rgb), 0) 60%), url(../images/me.jpg);
+    }
+    .static-about-container {
+        padding-left: 20px;
+    }
+    .about-image span.ant-avatar.ant-avatar-circle.ant-avatar-image {
+        margin-right: 5px;
+    }
+    .about-screen .ant-row-middle {
+        align-items: flex-start;
+    }
+    .about-screen .ant-row-center {
+        justify-content: flex-start;
+    }
+    .about-screen .ant-timeline-item {
+        font-size: 13px;
+    }
+    .banner-info p:first-child {
+        font-size: 18px;
+        font-weight: 600;
+    }
+    .banner-info .changing-text {
+        font-size: 20px !important;
+        font-weight: bold;
+    }
+    .about-section {
+        padding: 1.2rem 0;
+        font-size: 14px;
+    }
+    .after-form-text {
+        font-size: 14px;
+    }
+    .ant-form-item-label label {
+        font-size: 14px !important;
+    }
+}
+
+
+/* @media screen and (max-width: 1024px) {
+    .about-screen:before {
+        position: absolute;
+        width: 100%;
+        height: 60vh;
+        background-image: linear-gradient( 270deg, var(--bg), rgba(var(--bg-rgb), 0) 80%), linear-gradient( 0deg, var(--bg), rgba(var(--bg-rgb), 0) 60%), url(../images/me.jpg);
+    }
+} */

@@ -29,9 +29,9 @@ const AppFooter = () => {
                         </a>
                     </div>
                 </div>
-                <Divider style={{ backgroundColor: '#232B2B' }}/>
+                <Divider />
                 <div className="center-footer">
-                    <p style={{ color:'#232B2B'}}>Copyright &copy; 2021</p>
+                    <p>Copyright &copy; 2021</p>
                 </div>
             </div>
         </div>
