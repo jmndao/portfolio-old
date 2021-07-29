@@ -43,9 +43,9 @@ const authUser = asyncHandler(async(req, res) => {
     // Grab body Request
     const { email, password } = req.body;
     // Request user in DB
-    const user = await User.find({ email });
+    const user = await User.findOne({ email });
     // Check if user exist and is valid
-    if (user && user.comparePassword(password)) {
+    if (user && (await user.matchPassword(password))) {
         res.send({
             _id: user._id,
             name: user.name,

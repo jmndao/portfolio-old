@@ -2,26 +2,28 @@ import mongoose from "mongoose";
 
 
 const aboutSchema = mongoose.Schema({
+    about: { type: String, required: true },
     profile: { type: String, required: true },
     education: [{
         school: { type: String, required: true },
-        fromYear: { type: Date },
-        toYear: { type: Date },
+        fromYear: { type: String },
+        toYear: { type: String },
         description: { type: String, required: true }
     }],
     programmingSkill: [{
         language: { type: String, required: true },
+        image: { type: String, required: true },
         description: { type: String, required: true }
     }],
     languageSkill: [{
-        language: { type: String, required: true },
+        flag: { type: String, required: true },
         level: { type: String, required: true },
         levelRate: { type: Number, required: true, default: 2 }
     }],
     workExperience: [{
         enterpriseName: { type: String, required: true },
         position: { type: String, required: true },
-        Duration: { type: Number, default: 0 },
+        duration: { type: Number, default: 0 },
         website: { type: String, required: true }
     }],
     activity: [{
