@@ -297,6 +297,7 @@ const HomeScreen = () => {
                     </div>
                     <Row gutter={[16, 8]} className="align-form">
                         <Col sm={24} md={12}>
+                            <div className="home-form-wrapper">
                             <Form
                                 onFinish={formSubmitHandler}
                                 validateMessages={validateMessages}
@@ -354,6 +355,8 @@ const HomeScreen = () => {
                                     </Button>
                                 </Form.Item>
                             </Form>
+                            </div>
+                            
                             <Divider style={{ backgroundColor: "#eee" }} />
                             <p className="after-form-text">
                                 Lorem ipsum, dolor sit amet consectetur adipisicing elit.

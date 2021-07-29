@@ -69,6 +69,7 @@ h5 {
 html,
 body {
     font-family: 'Fira Code', monospace !important;
+    scroll-behavior: smooth;
 }
 
 * {
@@ -118,7 +119,7 @@ ul.ant-menu-overflow.ant-menu.ant-menu-root.ant-menu-horizontal.ant-menu-light.m
     padding-top: 4.5rem;
     background-color: #eee;
     width: 100%;
-    height: 100%;
+    height: 100vh;
 }
 
 .home-app .ant-col:first-child {
@@ -286,6 +287,12 @@ ul.ant-menu-overflow.ant-menu.ant-menu-root.ant-menu-horizontal.ant-menu-light.m
 
 
 /* Contact Section */
+
+.home-form-wrapper {
+    border-radius: 5px;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.6);
+    padding: 15px;
+}
 
 .contact-section {
     background-color: #232B2B;

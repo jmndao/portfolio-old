@@ -1,0 +1,75 @@
+:root {
+    --light: #eee;
+    --divider: #495057;
+    --bg: #232B2B;
+    --white: #fff;
+}
+
+.contact-screen {
+    background-color: var(--bg);
+    min-height: 100vh;
+    width: 100%;
+}
+
+.contact-screen:before {
+    content: "";
+    display: block;
+    position: fixed;
+    top: 49px;
+    left: 0;
+    width: 40%;
+    height: 100%;
+    background-image: linear-gradient( 270deg, var(--bg), rgba(var(--bg-rgb), 0) 90%), linear-gradient( 180deg, var(--bg), rgba(var(--bg-rgb), 0) 60%), url(../images/home.jpg);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: cover;
+}
+
+.contact-screen .center-footer {
+    color: var(--light);
+}
+
+.contact-wrapper {
+    padding-top: 100px;
+}
+
+.contact-form-wrapper {
+    width: 60%;
+    margin: 10px auto;
+    padding: 20px;
+}
+
+
+/* Glass Effect */
+
+.contact-form-glass {
+    position: relative;
+}
+
+.contact-form-wrapper {
+    border-radius: 5px;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.6);
+    position: relative;
+}
+
+.contact-form-wrapper:before {
+    content: '';
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+
+@media screen and (max-width: 578px) {
+    html,
+    body {
+        font-size: 13px;
+    }
+    .contact-screen:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-image: linear-gradient( 270deg, var(--bg), rgba(var(--bg-rgb), 0) 80%), linear-gradient( 0deg, var(--bg), rgba(var(--bg-rgb), 0) 60%), url(../images/home.jpg);
+    }
+}
