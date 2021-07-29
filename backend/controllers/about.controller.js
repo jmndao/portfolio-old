@@ -7,7 +7,8 @@ import About from "../models/about.model.js";
 // @access  Private|Admin
 const updateAbout = asyncHandler(async(req, res) => {
     // Get the data to update
-    const data = await About.findById(req.params.id);
+    const entry = req.params.entry;
+    const data = await About.findOne({ entry });
     // Get body from request
     const {
         about,

@@ -1,4 +1,5 @@
 const about = {
+    entry: "jmndao",
     about: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati temporibus impedit beatae porro, dolorum ut. Repellendus consequuntur assumenda obcaecati reiciendis aperiam natus. Ea explicabo perferendis cumque corrupti, saepe libero aperiam?",
     profile: "/static/images/about.jpg",
     education: [{

@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 
 const aboutSchema = mongoose.Schema({
+    entry: { type: String, required: true },
     about: { type: String, required: true },
     profile: { type: String, required: true },
     education: [{
