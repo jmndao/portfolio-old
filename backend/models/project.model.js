@@ -8,9 +8,8 @@ const projectSchema = mongoose.Schema({
     description: { type: String, required: true },
     private: { type: Boolean, default: false },
     doneAt: { type: Date },
-    description: { type: String, required: true },
-    forkLink: { type: String, required: true },
-    githubLink: { type: String, required: true },
+    forkLink: { type: String },
+    githubLink: { type: String },
     website: { type: String },
     participant: [{
         name: { type: String, required: true },

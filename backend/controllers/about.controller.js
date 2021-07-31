@@ -58,5 +58,21 @@ const getAbout = asyncHandler(async(req, res) => {
     res.json(about);
 });
 
+// @desc    Get about by entry
+// @route   GET /api/about/:entry
+// @access  Public
+const getAboutByEntry = asyncHandler(async(req, res) => {
+    // Request from Database
+    const entry = req.params.entry;
+    const about = await About.findOne({ entry });
 
-export { updateAbout, getAbout };
+    if (about) {
+        res.json(about);
+    } else {
+        res.status(404);
+        throw new Error('About content not found');
+    }
+});
+
+
+export { updateAbout, getAbout, getAboutByEntry };

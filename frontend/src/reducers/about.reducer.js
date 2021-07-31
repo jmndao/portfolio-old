@@ -1,19 +1,29 @@
-import { ABOUT_UPDATE_FAIL, ABOUT_UPDATE_REQUEST, ABOUT_UPDATE_SUCCESS } from "../constants/about.constant";
+import {
+    ABOUT_PROFILE_INFO_FAIL,
+    ABOUT_PROFILE_INFO_REQUEST,
+    ABOUT_PROFILE_INFO_SUCCESS,
+} from "../constants/about.constant";
 
-
-
-const updateAboutReducer = (state = {}, action) => {
+export const getAboutReducer = (
+    state = {
+        profileInfo: {
+            education: [],
+            languageSkill: [],
+            programmingSkill: [],
+            workExperience: [],
+            activity: [],
+        },
+    },
+    action
+) => {
     switch (action.type) {
-
-        case ABOUT_UPDATE_REQUEST:
-            return { loading: true }
-        case ABOUT_UPDATE_SUCCESS:
-            return { loading: false, success: true, about: action.payload }
-        case ABOUT_UPDATE_FAIL:
-            return { loading: false, error: action.payload }
+        case ABOUT_PROFILE_INFO_REQUEST:
+            return {...state, loading: true };
+        case ABOUT_PROFILE_INFO_SUCCESS:
+            return { loading: false, profileInfo: action.payload };
+        case ABOUT_PROFILE_INFO_FAIL:
+            return { loading: false, error: action.payload };
         default:
-            return state
+            return {...state };
     }
-}
-
-export { updateAboutReducer };
+};

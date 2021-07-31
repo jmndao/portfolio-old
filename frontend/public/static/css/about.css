@@ -172,6 +172,11 @@
     }
 }
 
+.spinner-loader {
+    width: 100%;
+    text-align: center;
+}
+
 
 /* @media screen and (max-width: 1024px) {
     .about-screen:before {

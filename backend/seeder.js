@@ -3,8 +3,10 @@ import dotenv from "dotenv";
 import colors from "colors";
 import User from "./models/user.model.js";
 import About from "./models/about.model.js";
+import Project from "./models/project.model.js";
 import users from "./data/user.data.js";
 import about from "./data/about.data.js";
+import projects from "./data/project.data.js";
 import connectDB from "./config/db.js";
 
 
@@ -18,10 +20,12 @@ const importData = async() => {
         // First Flush DataBase
         await User.deleteMany();
         await About.deleteMany();
+        await Project.deleteMany();
 
         // then Insert Data
         await User.insertMany(users);
         await About.insertMany(about);
+        await Project.insertMany(projects);
         // Everything Went well
         console.log('Data successfully imported'.green.inverse);
         process.exit();
@@ -38,6 +42,7 @@ const destroyData = async() => {
         // Flush DataBase
         await User.deleteMany();
         await About.deleteMany();
+        await Project.deleteMany();
         // Everything went well
         console.log('Data successfully destroyed'.green.inverse);
         process.exit();

@@ -119,7 +119,7 @@ ul.ant-menu-overflow.ant-menu.ant-menu-root.ant-menu-horizontal.ant-menu-light.m
     padding-top: 4.5rem;
     background-color: #eee;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .home-app .ant-col:first-child {
