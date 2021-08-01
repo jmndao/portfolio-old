@@ -1,10 +1,18 @@
 import React, { useState } from "react";
-import { Row, Col, Form, Input, Button, notification, Spin } from "antd";
-import { SendOutlined } from "@ant-design/icons";
+import { Row, Col, Form, Input, Button, notification, Spin, Card, Space, Divider } from "antd";
+import { SendOutlined, ContactsOutlined, AimOutlined } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { submitForm } from "../actions/contact.action";
+import AppFooter from "../components/AppFooter";
 
 const Contact = () => {
+
+    const IconText = ({ icon, text }) => (
+        <Space>
+            {React.createElement(icon)}
+            {text}
+        </Space>
+    );
 
     const dispatch = useDispatch();
 
@@ -13,16 +21,10 @@ const Contact = () => {
 
     const openNotificationWithIcon = (type, fname, fmessage) => {
         notification[type]({
-          message: fname ? (`Hi ${fname}`) : (`Hi X`),
-          description: fmessage
-    })};
-
-    const notificationError = (type, error) => {
-        notification[type]({
-          message: 'An unexpected error has occurd ',
-          description: error
-    })};
-
+            message: fname ? (`Hi ${fname}`) : (`Hi X`),
+            description: fmessage
+        })
+    };
 
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -43,11 +45,12 @@ const Contact = () => {
             setMessage(values.message);
 
             dispatch(submitForm({ name, email, message }));
-            openNotificationWithIcon('success', values.name, formMessage)
+            openNotificationWithIcon('success', values.name, formMessage.message);
+            values = {};
 
         } else {
             const fmessage = "Please to complete the contact form.";
-            openNotificationWithIcon('error', name, fmessage)
+            openNotificationWithIcon('error', name, fmessage.message)
         }
     };
 
@@ -58,17 +61,31 @@ const Contact = () => {
                     <div className="container">
                         <Row gutter={[16, 8]} align='middle' justify='center'>
                             <Col sm={24} md={12}>
-                                <ul><li>Contact</li></ul>
+                                <Card className="contact-card-card">
+                                    <IconText
+                                        icon={ContactsOutlined}
+                                        text="Contact"
+                                        key="list-vertical-like-o"
+                                    />
+                                    <p className="contact-card-content">+221 77 xxx xx xx</p>
+                                </Card>
                             </Col>
                             <Col sm={24} md={12}>
-                                <ul><li>Address</li></ul>
+                                <Card className="contact-card-card">
+                                    <IconText
+                                        icon={AimOutlined}
+                                        text="Address"
+                                        key="list-vertical-like-o"
+                                    />
+                                    <p className="contact-card-content">Dakar/Senegal, Castor street 1 | Villa 2</p>
+                                </Card>
                             </Col>
                         </Row>
                         <div className="contact-form-glass">
                             <div className="contact-form-glass-in">
                                 <div className="contact-form-wrapper">
                                     {loading && <Spin tip='Loading...' size='large' />}
-                                    { error && <div className="contact-error">{error}</div> }
+                                    {error && <div className="contact-error">{error}</div>}
                                     <Form
                                         onFinish={formSubmitHandler}
                                         validateMessages={validateMessages}
@@ -122,8 +139,12 @@ const Contact = () => {
                                     </Form>
                                 </div>
                             </div>
+                            <AppFooter />
+
                         </div>
+
                     </div>
+
                 </div>
             </div>
         </div>

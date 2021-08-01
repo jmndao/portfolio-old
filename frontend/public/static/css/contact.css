@@ -74,6 +74,32 @@
     display: none;
 }
 
+.contact-card-content {
+    color: #495057;
+    padding-left: 60px;
+}
+
+.contact-wrapper .ant-card-body .ant-space {
+    font-size: 16px;
+}
+
+.contact-wrapper .ant-card.ant-card-bordered {
+    box-shadow: 0 0 1rem 0 rgb(0 0 0 / 60%);
+    background-color: var(--light);
+}
+
+.contact-card-card .anticon {
+    font-size: 30px;
+}
+
+.contact-card-card .ant-space.ant-space-horizontal.ant-space-align-center {
+    gap: 30px !important;
+}
+
+.contact-wrapper .ant-divider.ant-divider-horizontal {
+    color: var(--bg);
+}
+
 @media screen and (max-width: 578px) {
     html,
     body {
@@ -86,5 +112,14 @@
         height: 100%;
         width: 100%;
         background-image: linear-gradient( 270deg, var(--bg), rgba(var(--bg-rgb), 0) 80%), linear-gradient( 0deg, var(--bg), rgba(var(--bg-rgb), 0) 60%), url(../images/home.jpg);
+    }
+    .contact-form-wrapper {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 786px) {
+    .contact-form-wrapper {
+        width: 80%;
     }
 }
