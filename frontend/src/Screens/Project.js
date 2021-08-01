@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
-import { Button, List, Result, Space, Spin } from "antd";
+import { Button, List, Result, Space, Spin, Tooltip, Avatar } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { ForkOutlined, RiseOutlined, CodeOutlined } from "@ant-design/icons";
-import Avatar from "antd/lib/avatar/avatar";
 import AppFooter from "../components/AppFooter";
 import { Fade } from "react-awesome-reveal";
 import { listProjects } from "../actions/project.action";
@@ -63,17 +62,33 @@ const Project = () => {
                                     /> : (
                                         <List.Item
                                             key={item._id}
-                                            actions={[
+                                            actions={
+                                                item.private ? [
                                                 <IconText
                                                     icon={ForkOutlined}
                                                     text="Fork"
                                                     key="list-vertical-star-o"
-                                                />,
+                                                />                                                ,
                                                 <IconText
                                                     icon={RiseOutlined}
                                                     text="Website"
                                                     key="list-vertical-like-o"
                                                 />,
+                                            ]: [
+                                                <a href={item.forkLink} target="_blank" rel="noopener noreferrer">
+                                                    <IconText
+                                                    icon={ForkOutlined}
+                                                    text="Fork"
+                                                    key="list-vertical-star-o"
+                                                />  
+                                                </a>,
+                                                <a href={item.github} target="_blank" rel="noopener noreferrer">
+                                                    <IconText
+                                                    icon={RiseOutlined}
+                                                    text="Website"
+                                                    key="list-vertical-like-o"
+                                                />
+                                                </a>
                                             ]}
                                             extra={
                                                 <img
@@ -84,7 +99,17 @@ const Project = () => {
                                             }
                                         >
                                             <List.Item.Meta
-                                                avatar={<Avatar src={item.avatar} />}
+                                                avatar={
+                                                    <Avatar.Group>
+                                                    {item.participant ? item.participant.map((p) => (
+                                                        <Tooltip title={p.pseudo} placement="top">
+                                                            <Avatar src={p.image} />
+                                                        </Tooltip>
+                                                    )) : (
+                                                        <Avatar style={{ backgroundColor: '#f56a00' }}>{"{J}"}</Avatar>
+                                                    )}
+                                                </Avatar.Group>
+                                                }
                                                 title={item.name}
                                                 description={item.private ? "Private " : "Public"}
                                             />

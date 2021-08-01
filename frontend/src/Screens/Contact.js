@@ -1,8 +1,28 @@
 import React, { useState } from "react";
-import { Row, Col, Form, Input, Button } from "antd";
+import { Row, Col, Form, Input, Button, notification, Spin } from "antd";
 import { SendOutlined } from "@ant-design/icons";
+import { useDispatch, useSelector } from "react-redux";
+import { submitForm } from "../actions/contact.action";
 
 const Contact = () => {
+
+    const dispatch = useDispatch();
+
+    const formSubmit = useSelector(state => state.formSubmit);
+    const { loading, error, formMessage } = formSubmit;
+
+    const openNotificationWithIcon = (type, fname, fmessage) => {
+        notification[type]({
+          message: fname ? (`Hi ${fname}`) : (`Hi X`),
+          description: fmessage
+    })};
+
+    const notificationError = (type, error) => {
+        notification[type]({
+          message: 'An unexpected error has occurd ',
+          description: error
+    })};
+
 
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -16,8 +36,19 @@ const Contact = () => {
         },
     };
 
-    const formSubmitHandler = () => {
-        console.log("Form submitted");
+    const formSubmitHandler = (values) => {
+        if (values) {
+            setName(values.name);
+            setEmail(values.email);
+            setMessage(values.message);
+
+            dispatch(submitForm({ name, email, message }));
+            openNotificationWithIcon('success', values.name, formMessage)
+
+        } else {
+            const fmessage = "Please to complete the contact form.";
+            openNotificationWithIcon('error', name, fmessage)
+        }
     };
 
     return (
@@ -36,6 +67,8 @@ const Contact = () => {
                         <div className="contact-form-glass">
                             <div className="contact-form-glass-in">
                                 <div className="contact-form-wrapper">
+                                    {loading && <Spin tip='Loading...' size='large' />}
+                                    { error && <div className="contact-error">{error}</div> }
                                     <Form
                                         onFinish={formSubmitHandler}
                                         validateMessages={validateMessages}
@@ -50,9 +83,6 @@ const Contact = () => {
                                                 },
                                             ]}
                                             value={name}
-                                            onFinish={(e) => {
-                                                setName(e.value);
-                                            }}
                                         >
                                             <Input />
                                         </Form.Item>
@@ -65,9 +95,6 @@ const Contact = () => {
                                                 },
                                             ]}
                                             value={email}
-                                            onFinish={(e) => {
-                                                setEmail(e.name);
-                                            }}
                                         >
                                             <Input />
                                         </Form.Item>
@@ -76,7 +103,7 @@ const Contact = () => {
                                             label="Message"
                                             value={message}
                                             onFinish={(e) => {
-                                                setMessage(e.value);
+                                                setMessage(e.target.value);
                                             }}
                                         >
                                             <Input.TextArea />
