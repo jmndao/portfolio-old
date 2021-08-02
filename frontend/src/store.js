@@ -5,12 +5,14 @@ import { userLoginReducer } from "./reducers/user.reducer";
 import { getAboutReducer } from "./reducers/about.reducer";
 import { getProjectsReducer } from "./reducers/project.reducer";
 import { formSubmitReducer } from "./reducers/contact.reducer";
+import { resumeDownloadReducer } from "./reducers/home.reducer";
 
 const reducers = combineReducers({
     userLogin: userLoginReducer,
     getAbout: getAboutReducer,
     getProjects: getProjectsReducer,
     formSubmit: formSubmitReducer,
+    resumeDownload: resumeDownloadReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo") ?

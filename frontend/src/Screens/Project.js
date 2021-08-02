@@ -49,7 +49,7 @@ const Project = () => {
                         dataSource={projects}
                         renderItem={(item) => (
                             <Fade cascade direction='up'>
-                                {loading ? <Spin tip='Loading...' size='large' className='spinner-loader' /> : error ?
+                                {loading ? <Spin tip='Loading...' size='small' className='spinner-loader' /> : error ?
                                     <Result
                                         status="500"
                                         title="500"

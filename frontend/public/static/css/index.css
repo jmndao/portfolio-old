@@ -87,7 +87,8 @@ body {
 
 /* Navigation Bar */
 
-ul.ant-menu-overflow.ant-menu.ant-menu-root.ant-menu-horizontal.ant-menu-light.myNav {
+
+/* ul.ant-menu-overflow.ant-menu.ant-menu-root.ant-menu-horizontal.ant-menu-light.myNav {
     display: flex;
     justify-content: center;
     height: var(--nav-height);
@@ -99,6 +100,39 @@ ul.ant-menu-overflow.ant-menu.ant-menu-root.ant-menu-horizontal.ant-menu-light.m
     left: 0;
     width: 100%;
     z-index: 10;
+} */
+
+.menu-header {
+    display: flex;
+    height: var(--nav-height);
+    box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    font-size: 1.1rem;
+    background-color: #fff;
+}
+
+.menu-header-brand {
+    text-align: center;
+    width: 10%;
+    margin: 0 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.ant-menu-horizontal {
+    border: 0 !important;
+}
+
+ul.ant-menu-overflow.ant-menu.ant-menu-root.ant-menu-horizontal.ant-menu-light.myNav {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .ant-menu-vertical .ant-menu-item,
@@ -255,6 +289,10 @@ ul.ant-menu-overflow.ant-menu.ant-menu-root.ant-menu-horizontal.ant-menu-light.m
     .container {
         width: 90%;
     }
+    .myNav {
+        justify-content: flex-start;
+        margin-left: 10px;
+    }
 }
 
 @media (min-width: 576px) {
@@ -357,6 +395,15 @@ a [aria-label='github'] {
 }
 
 .about-screen a [aria-label='github']:hover {
+    color: var(--github-hover-light);
+    transition: color 200ms ease;
+}
+
+.contact-form-glass a [aria-label='github'] {
+    color: var(--github-light);
+}
+
+.contact-form-glass a [aria-label='github']:hover {
     color: var(--github-hover-light);
     transition: color 200ms ease;
 }

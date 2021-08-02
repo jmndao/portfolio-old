@@ -8,6 +8,7 @@ import {
     Tooltip,
     Form,
     Divider,
+    notification,
 } from "antd";
 import TextLoop from "react-text-loop";
 import { Fade } from "react-awesome-reveal";
@@ -31,8 +32,23 @@ import React, { useState } from "react";
 import Avatar from "antd/lib/avatar/avatar";
 import Meta from "antd/lib/card/Meta";
 import AppFooter from "../components/AppFooter";
+import { useDispatch, useSelector } from "react-redux";
+import { downloadResume } from "../actions/home.action";
 
 const HomeScreen = () => {
+
+    const openNotificationWithIcon = (type, text) => {
+        notification[type]({
+            message: "Hi",
+            description: text
+        })
+    };
+
+    const dispatch = useDispatch();
+
+    const resumeDownload = useSelector(state => state.resumeDownload);
+    const { loading:loadingResume, success:successResume, error:errorResume } = resumeDownload;
+
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
@@ -44,6 +60,12 @@ const HomeScreen = () => {
             name: "Please to enter your Full Name",
         },
     };
+
+    const downloadMyResume = () => {
+        dispatch(downloadResume());
+        if (successResume) openNotificationWithIcon('success', "You've successfully downloaded my Resume.");
+        if (errorResume) openNotificationWithIcon('error', "Sorry, an unexpected error has occured.")
+    }
 
     const formSubmitHandler = () => {
         console.log("Form submitted");
@@ -92,6 +114,8 @@ const HomeScreen = () => {
                         shape="round"
                         icon={<DownloadOutlined />}
                         size="large"
+                        onClick={() => downloadMyResume() }
+                        loading={loadingResume}
                     >
                         Download My CV
                     </Button>

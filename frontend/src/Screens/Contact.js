@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Row, Col, Form, Input, Button, notification, Spin, Card, Space, Divider } from "antd";
+import { Row, Col, Form, Input, Button, notification, Spin, Card, Space } from "antd";
 import { SendOutlined, ContactsOutlined, AimOutlined } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { submitForm } from "../actions/contact.action";
@@ -95,9 +95,7 @@ const Contact = () => {
                                             name="name"
                                             label="Name"
                                             rules={[
-                                                {
-                                                    required: true,
-                                                },
+                                                { required: true },
                                             ]}
                                             value={name}
                                         >
@@ -107,9 +105,7 @@ const Contact = () => {
                                             name="email"
                                             label="Email"
                                             rules={[
-                                                {
-                                                    type: "email",
-                                                },
+                                                { type: "email" },
                                             ]}
                                             value={email}
                                         >
@@ -119,9 +115,6 @@ const Contact = () => {
                                             name="message"
                                             label="Message"
                                             value={message}
-                                            onFinish={(e) => {
-                                                setMessage(e.target.value);
-                                            }}
                                         >
                                             <Input.TextArea />
                                         </Form.Item>

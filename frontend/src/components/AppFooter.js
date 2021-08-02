@@ -1,5 +1,5 @@
 import { Divider, Image } from "antd";
-import LogoNav from "../images/logo_nav.png";
+import LogoNav from "../images/logo_nav.svg";
 import React from "react";
 import { GithubFilled, TwitterCircleFilled, YoutubeFilled, LinkedinFilled } from "@ant-design/icons";
 
