@@ -9,6 +9,7 @@
         "@testing-library/user-event": "^12.8.3",
         "antd": "^4.16.8",
         "axios": "^0.21.1",
+        "dropbox": "^10.5.0",
         "file-saver": "^2.0.5",
         "react": "^17.0.2",
         "react-ace-builds": "^7.3.6",

@@ -9,6 +9,8 @@ import {
     Form,
     Divider,
     notification,
+    Result,
+    Spin,
 } from "antd";
 import TextLoop from "react-text-loop";
 import { Fade } from "react-awesome-reveal";
@@ -34,6 +36,9 @@ import Meta from "antd/lib/card/Meta";
 import AppFooter from "../components/AppFooter";
 import { useDispatch, useSelector } from "react-redux";
 import { downloadResume } from "../actions/home.action";
+import { fetchAbout } from "../actions/about.action";
+import { submitForm } from "../actions/contact.action";
+
 
 const HomeScreen = () => {
 
@@ -47,7 +52,20 @@ const HomeScreen = () => {
     const dispatch = useDispatch();
 
     const resumeDownload = useSelector(state => state.resumeDownload);
-    const { loading:loadingResume, success:successResume, error:errorResume } = resumeDownload;
+    const {
+        loading: loadingResume,
+        success: successResume,
+        error: errorResume
+    } = resumeDownload;
+
+    const getAbout = useSelector((state) => state.getAbout)
+    const { loading: loadingAbout, error: errorAbout, profileInfo } = getAbout;
+
+    const getProjects = useSelector(state => state.getProjects);
+    const { loading: loadingProjects, error: errorProjects, projects } = getProjects;
+
+    const formSubmit = useSelector(state => state.formSubmit);
+    const { loading: loadingForm, error: errorForm, formMessage } = formSubmit;
 
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -67,8 +85,20 @@ const HomeScreen = () => {
         if (errorResume) openNotificationWithIcon('error', "Sorry, an unexpected error has occured.")
     }
 
-    const formSubmitHandler = () => {
-        console.log("Form submitted");
+    const formSubmitHandler = (values) => {
+        if (values) {
+            setName(values.name);
+            setEmail(values.email);
+            setMessage(values.message);
+
+            dispatch(submitForm({ name, email, message }));
+            openNotificationWithIcon('success', values.name, formMessage.message);
+            values = {};
+
+        } else {
+            const fmessage = "Please to complete the contact form.";
+            openNotificationWithIcon('error', name, fmessage.message)
+        }
     };
 
     return (
@@ -114,7 +144,7 @@ const HomeScreen = () => {
                         shape="round"
                         icon={<DownloadOutlined />}
                         size="large"
-                        onClick={() => downloadMyResume() }
+                        onClick={() => downloadMyResume()}
                         loading={loadingResume}
                     >
                         Download My CV
@@ -130,19 +160,21 @@ const HomeScreen = () => {
                             <div className="under right"></div>
                         </span>
                     </div>
-                    <Row justify="center" align="middle">
-                        <Col sm={24} md={8}>
-                            <Avatar src={Profile} className="avatar-big" />
-                        </Col>
-                        <Col sm={24} md={16}>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
-                            temporibus impedit beatae porro, dolorum ut. Repellendus
-                            consequuntur assumenda obcaecati reiciendis aperiam natus. Ea
-                            explicabo perferendis cumque corrupti, saepe libero aperiam?
-                        </Col>
-                    </Row>
+                    {loadingAbout ? <Spin tip='Loading...' size='small' /> : errorAbout ?
+                        (<div className="contact-error">{errorAbout}</div>) :
+                        (
+                            <Row gutter={[16, 8]} justify="center" align="middle">
+                                <Col sm={24} md={8}>
+                                    <Avatar src={profileInfo.profile} className="avatar-big" />
+                                </Col>
+                                <Col sm={24} md={16}>
+                                    {profileInfo.about}
+                                </Col>
+                            </Row>
+                        )
+                    }
                     <div className="proficiency p-1">
-                        <Row gutter={16} align="middle" justify="end">
+                        <Row gutter={[16, 8]} align="middle" justify="end">
                             <Col>
                                 <div className="app-header light left">
                                     <span>
@@ -152,12 +184,9 @@ const HomeScreen = () => {
                                 </div>
                             </Col>
                             <Col>
-                                <Avatar src={ReactJS} className="sm-ml-1" size="large" />
-                                <Avatar src={NodeJS} className="sm-ml-1" size="large" />
-                                <Avatar src={HTML5} className="sm-ml-1" size="large" />
-                                <Avatar src={CSS3} className="sm-ml-1" size="large" />
-                                <Avatar src={Python} className="sm-ml-1" size="large" />
-                                <Avatar src={Django} className="sm-ml-1" size="large" />
+                                {profileInfo.programmingSkill.map((prog) => (
+                                    <Avatar key={prog._id} src={prog.image} className="sm-ml-1" size="large" />
+                                ))}
                             </Col>
                         </Row>
                     </div>
@@ -173,140 +202,51 @@ const HomeScreen = () => {
                         </span>
                     </div>
                     <Row align="middle" gutter={[8, 16]} justify="center">
-                        <Fade cascade>
-                            <Col sm={12} md={7} className="gutter-row m-1">
-                                <Card
-                                    style={{ width: 300 }}
-                                    cover={
-                                        <img
-                                            alt="example"
-                                            src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                                        />
-                                    }
-                                    actions={[
-                                        <Tooltip placement="bottom" title="Github">
-                                            <a href="#!">
-                                                <GithubOutlined key="setting" />
-                                            </a>
-                                        </Tooltip>,
-                                        <Tooltip placement="bottom" title="Website">
-                                            <a href="#!">
-                                                <RiseOutlined />
-                                            </a>
-                                        </Tooltip>,
-                                        <Tooltip placement="bottom" title="See more">
-                                            <a href="#!">
-                                                <EllipsisOutlined key="ellipsis" />
-                                            </a>
-                                        </Tooltip>,
-                                    ]}
-                                >
-                                    <Meta
-                                        title="Easy Money"
-                                        description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi, a odit maiores exercitationem recusandae non."
-                                    />
-                                </Card>
-                            </Col>
-                            <Col sm={12} md={7} className="gutter-row m-1">
-                                <Card
-                                    style={{ width: 300 }}
-                                    cover={
-                                        <img
-                                            alt="example"
-                                            src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                                        />
-                                    }
-                                    actions={[
-                                        <Tooltip placement="bottom" title="Github">
-                                            <a href="#!">
-                                                <GithubOutlined key="setting" />
-                                            </a>
-                                        </Tooltip>,
-                                        <Tooltip placement="bottom" title="Website">
-                                            <a href="#!">
-                                                <RiseOutlined />
-                                            </a>
-                                        </Tooltip>,
-                                        <Tooltip placement="bottom" title="See more">
-                                            <a href="#!">
-                                                <EllipsisOutlined key="ellipsis" />
-                                            </a>
-                                        </Tooltip>,
-                                    ]}
-                                >
-                                    <Meta
-                                        title="Easy Money"
-                                        description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi, a odit maiores exercitationem recusandae non."
-                                    />
-                                </Card>
-                            </Col>
-                            <Col sm={12} md={7} className="gutter-row m-1">
-                                <Card
-                                    style={{ width: 300 }}
-                                    cover={
-                                        <img
-                                            alt="example"
-                                            src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                                        />
-                                    }
-                                    actions={[
-                                        <Tooltip placement="bottom" title="Github">
-                                            <a href="#!">
-                                                <GithubOutlined key="setting" />
-                                            </a>
-                                        </Tooltip>,
-                                        <Tooltip placement="bottom" title="Website">
-                                            <a href="#!">
-                                                <RiseOutlined />
-                                            </a>
-                                        </Tooltip>,
-                                        <Tooltip placement="bottom" title="See more">
-                                            <a href="#!">
-                                                <EllipsisOutlined key="ellipsis" />
-                                            </a>
-                                        </Tooltip>,
-                                    ]}
-                                >
-                                    <Meta
-                                        title="Easy Money"
-                                        description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi, a odit maiores exercitationem recusandae non."
-                                    />
-                                </Card>
-                            </Col>
-                            <Col sm={12} md={7} className="gutter-row m-1">
-                                <Card
-                                    style={{ width: 300 }}
-                                    cover={
-                                        <img
-                                            alt="example"
-                                            src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                                        />
-                                    }
-                                    actions={[
-                                        <Tooltip placement="bottom" title="Github">
-                                            <a href="#!">
-                                                <GithubOutlined key="setting" />
-                                            </a>
-                                        </Tooltip>,
-                                        <Tooltip placement="bottom" title="Website">
-                                            <a href="#!">
-                                                <RiseOutlined />
-                                            </a>
-                                        </Tooltip>,
-                                        <Tooltip placement="bottom" title="See more">
-                                            <a href="#!">
-                                                <EllipsisOutlined key="ellipsis" />
-                                            </a>
-                                        </Tooltip>,
-                                    ]}
-                                >
-                                    <Meta
-                                        title="Easy Money"
-                                        description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi, a odit maiores exercitationem recusandae non."
-                                    />
-                                </Card>
-                            </Col>
-                        </Fade>
+                        {loadingProjects ? <Spin tip='Loading...' size='large' />
+                            : errorProjects ? <Result
+                                status="500"
+                                title="500"
+                                subTitle="Sorry, something went wrong."
+                            /> : (
+                                <Fade cascade>
+                                    {projects.map(p => (
+                                        <Col sm={12} md={7} key={p._id} className="gutter-row m-1">
+                                            <Card
+                                                style={{ width: 300 }}
+                                                cover={
+                                                    <img
+                                                        alt={p.name}
+                                                        src={p.image}
+                                                    />
+                                                }
+                                                actions={[
+                                                    <Tooltip placement="bottom" title="Github">
+                                                        <a href="#!">
+                                                            <GithubOutlined key="setting" />
+                                                        </a>
+                                                    </Tooltip>,
+                                                    <Tooltip placement="bottom" title="Website">
+                                                        <a href="#!">
+                                                            <RiseOutlined />
+                                                        </a>
+                                                    </Tooltip>,
+                                                    <Tooltip placement="bottom" title="See more">
+                                                        <a href="#!">
+                                                            <EllipsisOutlined key="ellipsis" />
+                                                        </a>
+                                                    </Tooltip>,
+                                                ]}
+                                            >
+                                                <Meta
+                                                    title={p.name}
+                                                    description={p.description}
+                                                />
+                                            </Card>
+                                        </Col>
+                                    ))}
+                                </Fade>
+                            )
+                        }
                     </Row>
                 </div>
             </div>
@@ -322,65 +262,50 @@ const HomeScreen = () => {
                     <Row gutter={[16, 8]} className="align-form">
                         <Col sm={24} md={12}>
                             <div className="home-form-wrapper">
-                            <Form
-                                onFinish={formSubmitHandler}
-                                validateMessages={validateMessages}
-                                layout="vertical"
-                            >
-                                <Form.Item
-                                    name="name"
-                                    label="Name"
-                                    rules={[
-                                        {
-                                            required: true,
-                                        },
-                                    ]}
-                                    value={name}
-                                    onFinish={(e) => {
-                                        setName(e.value);
-                                    }}
+                                {loadingForm && <Spin tip='Loading...' size='small' />}
+                                {errorForm && <div className="contact-error">{errorForm}</div>}
+                                <Form
+                                    onFinish={formSubmitHandler}
+                                    validateMessages={validateMessages}
+                                    layout="vertical"
                                 >
-                                    <Input />
-                                </Form.Item>
-                                <Form.Item
-                                    name="email"
-                                    label="Email"
-                                    rules={[
-                                        {
-                                            type: "email",
-                                        },
-                                    ]}
-                                    value={email}
-                                    onFinish={(e) => {
-                                        setEmail(e.name);
-                                    }}
-                                >
-                                    <Input />
-                                </Form.Item>
-                                <Form.Item
-                                    name="message"
-                                    label="Message"
-                                    value={message}
-                                    onFinish={(e) => {
-                                        setMessage(e.value);
-                                    }}
-                                >
-                                    <Input.TextArea />
-                                </Form.Item>
-                                <Form.Item className="center">
-                                    <Button
-                                        type="primary"
-                                        htmlType="submit"
-                                        icon={<SendOutlined />}
-                                        shape="round"
-                                        size="large"
+                                    <Form.Item
+                                        name="name"
+                                        label="Name"
+                                        rules={[{ required: true }]}
+                                        value={name}
                                     >
-                                        Submit
-                                    </Button>
-                                </Form.Item>
-                            </Form>
+                                        <Input />
+                                    </Form.Item>
+                                    <Form.Item
+                                        name="email"
+                                        label="Email"
+                                        rules={[{ type: "email" }]}
+                                        value={email}
+                                    >
+                                        <Input />
+                                    </Form.Item>
+                                    <Form.Item
+                                        name="message"
+                                        label="Message"
+                                        value={message}
+                                    >
+                                        <Input.TextArea />
+                                    </Form.Item>
+                                    <Form.Item className="center">
+                                        <Button
+                                            type="primary"
+                                            htmlType="submit"
+                                            icon={<SendOutlined />}
+                                            shape="round"
+                                            size="large"
+                                        >
+                                            Submit
+                                        </Button>
+                                    </Form.Item>
+                                </Form>
                             </div>
-                            
+
                             <Divider style={{ backgroundColor: "#eee" }} />
                             <p className="after-form-text">
                                 Lorem ipsum, dolor sit amet consectetur adipisicing elit.
