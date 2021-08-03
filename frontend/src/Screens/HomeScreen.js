@@ -85,15 +85,17 @@ const HomeScreen = () => {
         if (errorResume) openNotificationWithIcon('error', "Sorry, an unexpected error has occured.")
     }
 
+    const [contactForm] = Form.useForm();
+
     const formSubmitHandler = (values) => {
         if (values) {
             setName(values.name);
             setEmail(values.email);
             setMessage(values.message);
 
-            dispatch(submitForm(name, email, message));
+            dispatch(submitForm(values.name, values.email, values.message));
             openNotificationWithIcon('success', values.name, formMessage.message);
-            values = {};
+            contactForm.resetFields();
 
         } else {
             const fmessage = "Please to complete the contact form.";
@@ -265,6 +267,7 @@ const HomeScreen = () => {
                                 {loadingForm && <Spin tip='Loading...' size='small' />}
                                 {errorForm && <div className="contact-error">{errorForm}</div>}
                                 <Form
+                                    form={contactForm}
                                     onFinish={formSubmitHandler}
                                     validateMessages={validateMessages}
                                     layout="vertical"

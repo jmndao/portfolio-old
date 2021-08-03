@@ -38,14 +38,18 @@ const Contact = () => {
         },
     };
 
+    const [contactForm]  = Form.userForm();
+
     const formSubmitHandler = (values) => {
         if (values) {
             setName(values.name);
             setEmail(values.email);
             setMessage(values.message);
 
-            dispatch(submitForm({ name, email, message }));
+            dispatch(submitForm( values.name, values.email, values.message ));
             openNotificationWithIcon('success', values.name, formMessage.message);
+            contactForm.resetFields();
+
             values = {};
 
         } else {
@@ -87,6 +91,7 @@ const Contact = () => {
                                     {loading && <Spin tip='Loading...' size='large' />}
                                     {error && <div className="contact-error">{error}</div>}
                                     <Form
+                                        form={contactForm}
                                         onFinish={formSubmitHandler}
                                         validateMessages={validateMessages}
                                         layout="vertical"
