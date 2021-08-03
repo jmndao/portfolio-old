@@ -91,7 +91,7 @@ const HomeScreen = () => {
             setEmail(values.email);
             setMessage(values.message);
 
-            dispatch(submitForm({ name, email, message }));
+            dispatch(submitForm(name, email, message));
             openNotificationWithIcon('success', values.name, formMessage.message);
             values = {};
 

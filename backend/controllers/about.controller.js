@@ -3,7 +3,7 @@ import About from "../models/about.model.js";
 
 
 // @desc    Update About Info
-// @route   PUT /api/about/:id
+// @route   PUT /api/about/:entry
 // @access  Private|Admin
 const updateAbout = asyncHandler(async(req, res) => {
     // Get the data to update

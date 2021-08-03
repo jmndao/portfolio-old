@@ -1,10 +1,30 @@
-import { Button, Divider, Input, Form, Checkbox } from "antd";
+// import React, { useEffect } from "react";
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Button, Divider, Input, Form, Checkbox, Spin } from "antd";
+import { login } from "../actions/user.action";
 
-const Login = () => {
+// const Login = ({ location, history }) => {
+const Login = ({ history }) => {
+    const dispatch = useDispatch();
+
+    // const redirect = location.search ? location.search.split("=")[1] : "/";
+
+    const userLogin = useSelector(state => state.userLogin);
+    const { loading, error, userInfo } = userLogin;
+
+    // useEffect(() => {
+    //     if (userInfo) {
+    //       history.push(redirect);
+    //     }
+    //   }, [history, userInfo, redirect]);
 
     const onFinish = (values) => {
-        console.log('Success:', values);
+        // DISPATCH LOGIN
+        if (userInfo) {
+            history.push('/admin');
+        }
+        dispatch(login(values.email, values.password));
     };
 
     const onFinishFailed = (errorInfo) => {
@@ -20,6 +40,8 @@ const Login = () => {
             <div className="login-screen-wrapper">
                 <div className="login-left-curly">{"{"}</div>
                 <div className="login-form">
+                    {loading && <Spin tip='Loading...' size='small' />}
+                    {error && <div className="contact-error">{error}</div>}
                     <Form
                         name="basic"
                         labelCol={{ span: 8 }}
@@ -30,7 +52,7 @@ const Login = () => {
                     >
                         <Form.Item
                             label="Email"
-                            name="Email"
+                            name="email"
                             rules={[{
                                 required: true,
                                 message: 'Please input your username!',

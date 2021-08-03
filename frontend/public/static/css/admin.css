@@ -1,0 +1,30 @@
+/* ADMIN CSS */
+
+:root {
+    --light: #eee;
+    --bg: #232b2b;
+    --nav-height: 50px;
+}
+
+.admin-screen {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    /* Default background-color light */
+    background-color: var(--light);
+}
+
+.admin-screen.light {
+    background-color: var(--light);
+    color: var(--bg) !important;
+}
+
+.admin-screen.dark {
+    background-color: var(--bg);
+    color: var(--light) !important;
+}
+
+.admin-screen-wrapper {
+    margin-top: calc(var(--nav-height) - 1px);
+    padding: 2rem 1.5rem;
+}

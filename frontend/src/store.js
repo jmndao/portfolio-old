@@ -2,7 +2,7 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { userLoginReducer } from "./reducers/user.reducer";
-import { getAboutReducer } from "./reducers/about.reducer";
+import { getAboutReducer, aboutUpdateReducer } from "./reducers/about.reducer";
 import { getProjectsReducer } from "./reducers/project.reducer";
 import { formSubmitReducer } from "./reducers/contact.reducer";
 import { resumeDownloadReducer } from "./reducers/home.reducer";
@@ -13,6 +13,7 @@ const reducers = combineReducers({
     getProjects: getProjectsReducer,
     formSubmit: formSubmitReducer,
     resumeDownload: resumeDownloadReducer,
+    aboutUpdate: aboutUpdateReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo") ?
