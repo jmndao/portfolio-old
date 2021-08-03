@@ -1,6 +1,4 @@
-import { Button, Divider, Input } from "antd";
-import Checkbox from "antd/lib/checkbox/Checkbox";
-import Form from "antd/lib/form/Form";
+import { Button, Divider, Input, Form, Checkbox } from "antd";
 import React from "react";
 
 const Login = () => {
@@ -15,34 +13,28 @@ const Login = () => {
 
     return (
         <div className='login-screen'>
-            <div className="login-left-curly">{"{"}</div>
             <div className="login-header">
                 <h3> JAdmin Space </h3>
                 <Divider />
+            </div>
+            <div className="login-screen-wrapper">
+                <div className="login-left-curly">{"{"}</div>
                 <div className="login-form">
                     <Form
                         name="basic"
-                        labelCol={{
-                            span: 8,
-                        }}
-                        wrapperCol={{
-                            span: 16,
-                        }}
-                        initialValues={{
-                            remember: true,
-                        }}
+                        labelCol={{ span: 8 }}
+                        wrapperCol={{ span: 16 }}
+                        initialValues={{ remember: true }}
                         onFinish={onFinish}
                         onFinishFailed={onFinishFailed}
                     >
                         <Form.Item
-                            label="Username"
-                            name="username"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: 'Please input your username!',
-                                },
-                            ]}
+                            label="Email"
+                            name="Email"
+                            rules={[{
+                                required: true,
+                                message: 'Please input your username!',
+                            }]}
                         >
                             <Input />
                         </Form.Item>
@@ -50,12 +42,10 @@ const Login = () => {
                         <Form.Item
                             label="Password"
                             name="password"
-                            rules={[
-                                {
+                            rules={[{
                                     required: true,
                                     message: 'Please input your password!',
-                                },
-                            ]}
+                                }]}
                         >
                             <Input.Password />
                         </Form.Item>
@@ -83,8 +73,8 @@ const Login = () => {
                         </Form.Item>
                     </Form>
                 </div>
+                <div className="login-right-curly">{"}"}</div>
             </div>
-            <div className="login-right-curly">{"}"}</div>
         </div>
     )
 }

@@ -9,6 +9,7 @@ import Contact from "./Screens/Contact";
 import Jcode from "./Screens/Jcode";
 import { BackTop } from "antd";
 import Admin from "./Screens/Admin";
+import Login from "./Screens/Login";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Route path='/contact' component={Contact} />
       <Route path='/jCode' component={Jcode} />
       <Route path='/admin' component={Admin} />
+      <Route path='/login' component={Login} />
       <BackTop />
     </Router>
   );

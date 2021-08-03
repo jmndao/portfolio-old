@@ -16,12 +16,6 @@ import TextLoop from "react-text-loop";
 import { Fade } from "react-awesome-reveal";
 import CodeJ from "../images/code_j.png";
 import Profile from "../images/profile.png";
-import NodeJS from "../images/nodejs.svg";
-import Python from "../images/python.svg";
-import Django from "../images/django.svg";
-import HTML5 from "../images/html5.svg";
-import CSS3 from "../images/css3.svg";
-import ReactJS from "../images/react.svg";
 import {
     LinkedinOutlined,
     GithubOutlined,
@@ -30,7 +24,7 @@ import {
     RiseOutlined,
     SendOutlined,
 } from "@ant-design/icons";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Avatar from "antd/lib/avatar/avatar";
 import Meta from "antd/lib/card/Meta";
 import AppFooter from "../components/AppFooter";
@@ -38,6 +32,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { downloadResume } from "../actions/home.action";
 import { fetchAbout } from "../actions/about.action";
 import { submitForm } from "../actions/contact.action";
+import { listProjects } from "../actions/project.action";
 
 
 const HomeScreen = () => {
@@ -78,6 +73,11 @@ const HomeScreen = () => {
             name: "Please to enter your Full Name",
         },
     };
+
+    useEffect(() => {
+        dispatch(fetchAbout());
+        dispatch(listProjects());
+    }, [dispatch]);
 
     const downloadMyResume = () => {
         dispatch(downloadResume());

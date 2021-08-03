@@ -336,12 +336,12 @@ ul.ant-menu-overflow.ant-menu.ant-menu-root.ant-menu-horizontal.ant-menu-light.m
     background-color: #232B2B;
 }
 
-.ant-form-item-label label {
+.contact-section .ant-form-item-label label {
     color: #eee !important;
     font-size: 18px !important;
 }
 
-.ant-row.ant-form-item.center {
+.contact-section .ant-row.ant-form-item.center {
     text-align: center;
 }
 

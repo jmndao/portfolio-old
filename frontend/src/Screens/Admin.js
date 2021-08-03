@@ -1,8 +1,12 @@
-import { Tabs, TabPane } from "antd";
+import { Tabs } from "antd";
 import { AppleOutlined, AndroidOutlined } from "@ant-design/icons";
 import React from "react";
 
 const Admin = () => {
+
+    const { TabPane } = Tabs;
+
+
     return (
         <div>
             <Tabs defaultActiveKey="2">
