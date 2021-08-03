@@ -4,6 +4,12 @@ const aboutSchema = mongoose.Schema({
     entry: { type: String, required: true },
     about: { type: String, required: true },
     profile: { type: String, required: true },
+    technology: [{
+        web: { type: Boolean, default: true },
+        android: { type: Boolean, default: false },
+        ios: { type: Boolean, default: false },
+        desktop: { type: Boolean, default: false },
+    }, ],
     education: [{
         school: { type: String, required: true },
         fromYear: { type: String },
@@ -18,7 +24,7 @@ const aboutSchema = mongoose.Schema({
     otherSkill: [{
         name: { type: String, required: true },
         image: { type: String, required: true },
-    }],
+    }, ],
     languageSkill: [{
         flag: { type: String, required: true },
         level: { type: String, required: true },
@@ -35,7 +41,13 @@ const aboutSchema = mongoose.Schema({
     }, ],
     interest: [{
         name: { type: String, required: true },
-    }, ]
+    }, ],
+    certification: [{
+        name: { type: String, required: true },
+        image: { type: String, required: true },
+        from: { type: String, required: true },
+    }, ],
+
 }, { timestamps: true });
 
 const About = mongoose.model("About", aboutSchema);
