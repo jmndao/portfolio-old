@@ -62,6 +62,11 @@ const about = {
             levelRate: 2
         },
     ],
+    otherSkill: [
+        { name: "Firebase", image: "/static/images/firebase.svg" },
+        { name: "Heroku", image: "/static/images/heroku.svg" },
+        { name: "cPanel", image: "/static/images/cpanel.svg" },
+    ],
     workExperience: [{
             enterpriseName: "Giga Electronic",
             position: "Software Developer",
@@ -79,6 +84,12 @@ const about = {
         { name: "Swimming" },
         { name: "BasketBall" },
         { name: "Video Game" }
+    ],
+    interest: [
+        { name: "Machine Learning" },
+        { name: "Data Science" },
+        { name: "Cloud Storage" },
+        { name: "BlockChain" }
     ]
 };
 

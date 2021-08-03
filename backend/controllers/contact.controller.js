@@ -6,7 +6,7 @@ import Contact from "../models/contact.model.js";
 // @access  Public
 const submitForm = asyncHandler(async(req, res) => {
     // Get data from body
-    const { name, email, message } = req.body.name;
+    const { name, email, message } = req.body;
 
     // create new record document in db
     const created = await Contact.create({ name, email, message });
