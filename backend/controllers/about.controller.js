@@ -13,6 +13,7 @@ const updateAbout = asyncHandler(async(req, res) => {
     const {
         about,
         profile,
+        technology,
         education,
         programmingSkill,
         otherSkill,
@@ -20,12 +21,14 @@ const updateAbout = asyncHandler(async(req, res) => {
         workExperience,
         activity,
         interest,
+        certification,
     } = req.body;
 
     // Check if there is data
     if (data) {
         data.about = about || data.about;
         data.profile = profile || data.profile;
+        data.technology = technology || data.technology;
         data.education = education || data.education;
         data.programmingSkill = programmingSkill || data.programmingSkill;
         data.otherSkill = otherSkill || data.otherSkill;
@@ -33,6 +36,7 @@ const updateAbout = asyncHandler(async(req, res) => {
         data.workExperience = workExperience || data.workExperience;
         data.activity = activity || data.activity;
         data.interest = interest || data.interest;
+        data.certification = certification || data.certification;
 
         // Save update or modifications
         const dataUpdated = await data.save();
@@ -41,13 +45,15 @@ const updateAbout = asyncHandler(async(req, res) => {
             _id: dataUpdated._id,
             about: dataUpdated.about,
             profile: dataUpdated.profile,
+            technology: dataUpdated.technology,
             education: dataUpdated.education,
             programmingSkill: dataUpdated.programmingSkill,
             otherSkill: dataUpdated.otherSkill,
             languageSkill: dataUpdated.languageSkill,
             workExperience: dataUpdated.workExperience,
             activity: dataUpdated.activity,
-            interest: dataUpdated.interest
+            interest: dataUpdated.interest,
+            certification: dataUpdated.certification,
         });
     } else {
         res.status(404);

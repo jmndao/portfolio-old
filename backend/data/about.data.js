@@ -90,6 +90,12 @@ const about = {
         { name: "Data Science" },
         { name: "Cloud Storage" },
         { name: "BlockChain" }
+    ],
+    certification: [
+        { name: "Node Master Class" },
+        { image: "/static/images/node_master_class.png" },
+        { link: "https://www.example.com" },
+        { from: "Pirple" }
     ]
 };
 
