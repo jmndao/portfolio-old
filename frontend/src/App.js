@@ -6,6 +6,7 @@ import HomeScreen from "./Screens/HomeScreen";
 import About from "./Screens/About";
 import Project from "./Screens/Project";
 import Contact from "./Screens/Contact";
+import Jcode from "./Screens/Jcode";
 import { BackTop } from "antd";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <Route path='/about' component={About} />
       <Route path='/project' component={Project} />
       <Route path='/contact' component={Contact} />
+      <Route path='/jCode' component={Jcode} />
       <BackTop />
     </Router>
   );

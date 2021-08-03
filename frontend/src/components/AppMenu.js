@@ -19,12 +19,6 @@ const AppMenu = () => {
                     shape='square'
                     size='large'
                 />
-                {/* <Image
-                    src={LogoNav}
-                    width={'40px'}
-                    height={'40px'}
-                    preview={false}
-                /> */}
             </div>
             <Menu
                 onClick={handleClick}
@@ -53,12 +47,12 @@ const AppMenu = () => {
                         {"{"} ...Contacts {"}"}
                     </Link>
                 </Menu.Item>
-                <Menu.Item key="donation">
+                <Menu.Item key="jCode">
                     <Button
                         type="primary"
                         shape="round"
                     >
-                        Donate
+                        <Link to="/jCode">JCode</Link>
                     </Button>
                 </Menu.Item>
             </Menu>
