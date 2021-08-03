@@ -8,6 +8,7 @@ import Project from "./Screens/Project";
 import Contact from "./Screens/Contact";
 import Jcode from "./Screens/Jcode";
 import { BackTop } from "antd";
+import Admin from "./Screens/Admin";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Route path='/project' component={Project} />
       <Route path='/contact' component={Contact} />
       <Route path='/jCode' component={Jcode} />
+      <Route path='/admin' component={Admin} />
       <BackTop />
     </Router>
   );
