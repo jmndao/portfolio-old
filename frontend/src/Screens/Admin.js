@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Tabs, Row, Col, Spin, Form, Input, Button, Space, Upload } from "antd";
+import { Tabs, Row, Col, Spin, Form, Input, Button, Space, Divider, Upload } from "antd";
 import { AppleOutlined, AndroidOutlined, MinusCircleOutlined, PlusOutlined, UploadOutlined } from "@ant-design/icons";
 import { updateAbout, fetchAbout } from "../actions/about.action";
+import DynamicField from "../components/DynamicField";
 
 
 const Admin = () => {
@@ -31,16 +32,23 @@ const Admin = () => {
         return e && e.fileList;
     };
 
+    
     aboutForm.setFieldsValue({ entry: profileInfo.entry });
     aboutForm.setFieldsValue({ about: profileInfo.about });
-    aboutForm.setFields(profileInfo.education)
     //aboutForm.setFieldsValue({ profile: profileInfo.profile });
-    //aboutForm.setFieldsValue({ entry: profileInfo.entry });
-    //aboutForm.setFieldsValue({ entry: profileInfo.entry });
+    aboutForm.setFieldsValue({ education: profileInfo.education });
+    aboutForm.setFieldsValue({ programmingSkill: profileInfo.programmingSkill });
+    aboutForm.setFieldsValue({ languageSkill: profileInfo.languageSkill });
+    aboutForm.setFieldsValue({ otherSkill: profileInfo.otherSkill });
+    aboutForm.setFieldsValue({ workExperience: profileInfo.workExperience });
+    aboutForm.setFieldsValue({ activity: profileInfo.activity });
+    aboutForm.setFieldsValue({ interest: profileInfo.interest });
+    aboutForm.setFieldsValue({ certification: profileInfo.certification });
+    //console.log(profileInfo)
 
     useEffect(() => {
         dispatch(fetchAbout());
-    }, [dispatch])
+    }, [dispatch]);
 
     const aboutSubmitHandler = (values) => {
         dispatch(updateAbout(values));
@@ -65,7 +73,12 @@ const Admin = () => {
                             >
                                 {loadingAbout && <Spin tip="Loading..." />}
                                 {errorAbout && <div className='contact-error'>{errorAbout}</div>}
-                                <Form name="dynamic_form_nest_item" form={aboutForm} {...formItemLayoutWithOutLabel} onFinish={aboutSubmitHandler} >
+                                <Form 
+                                    name="aboutProfile" 
+                                    form={aboutForm} 
+                                    {...formItemLayoutWithOutLabel} 
+                                    onFinish={aboutSubmitHandler} 
+                                >
                                     <Form.Item
                                         name="entry"
                                         label="Entry"
@@ -89,53 +102,7 @@ const Admin = () => {
                                         </Upload>
                                     </Form.Item>
 
-                                    <Form.List name="education" layout='inline'>
-                                        {(fields, { add, remove }) => (
-                                            <>
-                                                {fields.map(({ key, name, fieldKey, ...restField }, index) => (
-                                                    <Space key={key} align='start'>
-                                                        <Form.Item
-                                                            {...restField}
-                                                            name={[name, 'school']}
-                                                            fieldKey={[fieldKey, 'school']}
-                                                            label={index === 0 ? 'Education' : ''}
-                                                        >
-                                                            <Input placeholder="School" />
-                                                        </Form.Item>
-                                                        <Form.Item
-                                                            {...restField}
-                                                            name={[name, 'fromYear']}
-                                                            fieldKey={[fieldKey, 'fromYear']}
-                                                        >
-                                                            <Input placeholder="From Year" />
-                                                        </Form.Item>
-                                                        <Form.Item
-                                                            {...restField}
-                                                            name={[name, 'toYear']}
-                                                            fieldKey={[fieldKey, 'toYear']}
-                                                        >
-                                                            <Input placeholder="To Year" />
-                                                        </Form.Item>
-                                                        <Form.Item
-                                                            {...restField}
-                                                            name={[name, 'description']}
-                                                            fieldKey={[fieldKey, 'description']}
-                                                        >
-                                                            <Input.TextArea placeholder="Description" />
-                                                        </Form.Item>
-
-                                                        <MinusCircleOutlined onClick={() => remove(name)} />
-                                                    </Space>
-                                                ))}
-                                                <Form.Item>
-                                                    <Button type="dashed" onClick={() => add()} block icon={<PlusOutlined />}>
-                                                        Add Education
-                                                    </Button>
-                                                </Form.Item>
-                                            </>
-                                        )}
-                                    </Form.List>
-
+                                    <DynamicField normFile={normFile} />
 
                                     <Form.Item>
                                         <Button type="primary" htmlType="submit">
