@@ -124,6 +124,13 @@
     width: 100%;
 }
 
+
+/* Admin */
+
+.admin-about-form .ant-upload-list-item.ant-upload-list-item-uploading.ant-upload-list-item-list-type-text {
+    display: none;
+}
+
 @media screen and (max-width: 578px) {
     html,
     body {

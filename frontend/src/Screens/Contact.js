@@ -38,7 +38,7 @@ const Contact = () => {
         },
     };
 
-    const [contactForm]  = Form.userForm();
+    const [contactForm]  = Form.useForm();
 
     const formSubmitHandler = (values) => {
         if (values) {

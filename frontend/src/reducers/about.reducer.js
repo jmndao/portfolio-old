@@ -5,7 +5,10 @@ import {
     ABOUT_PROFILE_UPDATE_REQUEST,
     ABOUT_PROFILE_UPDATE_SUCCESS,
     ABOUT_PROFILE_UPDATE_FAIL,
-    ABOUT_PROFILE_UPDATE_RESET
+    ABOUT_PROFILE_UPDATE_RESET,
+    FIREBASE_UPLOAD_PROGRESS,
+    FIREBASE_UPLOAD_ERROR,
+    FIREBASE_UPLOAD_END
 } from "../constants/about.constant";
 
 export const getAboutReducer = (
@@ -61,4 +64,18 @@ export const aboutUpdateReducer = (state = {
         default:
             return {...state };
     }
-}
+};
+
+export const firebaseUploderReducer = (state = {}, action) => {
+
+    switch (action.type) {
+        case FIREBASE_UPLOAD_PROGRESS:
+            return { onProgress: true, id: action.payload }
+        case FIREBASE_UPLOAD_ERROR:
+            return { onProgress: false, uploadError: action.payload }
+        case FIREBASE_UPLOAD_END:
+            return { onProgress: false, fileUrl: action.payload }
+        default:
+            return state;
+    }
+};

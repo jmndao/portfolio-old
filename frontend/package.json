@@ -11,6 +11,7 @@
         "axios": "^0.21.1",
         "dropbox": "^10.5.0",
         "file-saver": "^2.0.5",
+        "firebase": "^8.9.1",
         "react": "^17.0.2",
         "react-ace-builds": "^7.3.6",
         "react-awesome-reveal": "^3.8.1",
