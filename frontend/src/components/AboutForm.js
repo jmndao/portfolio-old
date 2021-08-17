@@ -3,7 +3,7 @@ import { Button, Form, Input, Space, Spin, Upload } from "antd";
 import { fetchAbout } from "../actions/about.action";
 import { useDispatch, useSelector } from "react-redux";
 import { MinusCircleOutlined, PlusOutlined, UploadOutlined, LoadingOutlined } from "@ant-design/icons";
-import { firebaseUpload } from "../actions/about.action";
+import { firebaseUpload, firebaseRemove } from "../actions/about.action";
 
 const AboutForm = () => {
 
@@ -12,16 +12,19 @@ const AboutForm = () => {
     const getAbout = useSelector(state => state.getAbout);
     const { loading, error, profileInfo } = getAbout;
 
-    const firebaseUploader = useSelector(state => state.firebaseUploader);
-    const { onProgress, uploadError, fileUrl, id } = firebaseUploader;
+    //const firebaseUploader = useSelector(state => state.firebaseUploader);
+    //const { onProgress, uploadError, onComplete, fileUrl, id } = firebaseUploader;
 
     const onFinishFailed = () => {
         console.log('Form Submission failed');
     }
 
-    const uploadOnChangeHandler = (e, key) => {
-        const file = e.target.files[0]
-        dispatch(firebaseUpload(file, key));
+    const firebaseRemoveHandler = e => {
+        dispatch(firebaseRemove(e));
+    }
+
+    const firebaseUploadHandler = e => {
+        dispatch(firebaseUpload(e))
     }
 
     const onFinish = (values) => {
@@ -29,6 +32,7 @@ const AboutForm = () => {
     }
 
     const normFile = (e) => {
+        console.log("Hello World")
         if (Array.isArray(e)) {
             return e;
         }
@@ -103,9 +107,15 @@ const AboutForm = () => {
                                                         name={[name, "image"]}
                                                         fieldKey={[fieldKey, "image"]}
                                                     >
-                                                        <Input type='file' onChange={e => uploadOnChangeHandler(e, key)} />
-                                                        { onProgress && key === id && (<Spin key={fieldKey} size='small' indicator={<LoadingOutlined />} />)}
-                                                        { uploadError && key === id (<div key={fieldKey} className="contact-error">{uploadError}</div>)}
+                                                        <Upload
+                                                            customRequest={(e) => firebaseUploadHandler(e)}
+                                                            onRemove={(e) => firebaseRemoveHandler(e)}
+                                                        >
+                                                            <Button icon={<UploadOutlined />}>Click to Upload</Button>
+                                                        </Upload>
+
+                                                        {/*onProgress && key === id && (<Spin key={fieldKey} size='small' indicator={<LoadingOutlined />} />)*/}
+                                                        {/* uploadError && key === id(<div key={fieldKey} className="contact-error">{uploadError}</div>)*/}
                                                     </Form.Item>
                                                     <Form.Item name={[name, "description"]} fieldKey={[fieldKey, "description"]}>
                                                         <Input.TextArea placeholder='Description' />

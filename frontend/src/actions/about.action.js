@@ -55,9 +55,7 @@ const updateAbout = (profileInfo) => async(dispatch, getState) => {
     }
 }
 
-const firebaseUpload = (file, key) => (dispatch) => {
-
-    const id = key;
+const firebaseUpload = ({ onSuccess, onProgress, onError, file }) => (dispatch) => {
 
     const storageRef = storage.ref(`portfolio/${file.name}`);
 
@@ -67,20 +65,34 @@ const firebaseUpload = (file, key) => (dispatch) => {
         "state_changed",
 
         function progress(snapshot) {
-            //var percentage = Math.floor(snapshot.bytesTransferred / snapshot.totalBytes).toFixed(2) * 100;
-            dispatch({ type: FIREBASE_UPLOAD_PROGRESS, payload: id });
+            dispatch({ type: FIREBASE_UPLOAD_PROGRESS });
+            onProgress({
+                percent: Math.floor(snapshot.bytesTransferred / snapshot.totalBytes).toFixed(2) * 100
+            }, file);
         },
 
         function error(err) {
-            dispatch({ type: FIREBASE_UPLOAD_ERROR, payload: err })
+            dispatch({ type: FIREBASE_UPLOAD_ERROR, payload: err });
+            onError(err, file);
         },
 
         function complete() {
             task.snapshot.ref.getDownloadURL().then(fileUrl => {
                 dispatch({ type: FIREBASE_UPLOAD_END, payload: fileUrl })
+                onSuccess(fileUrl, file);
             });
         }
     )
 }
 
-export { fetchAbout, updateAbout, firebaseUpload };
+const firebaseRemove = ({ name }) => async() => {
+    const storageRef = storage.ref(`portfolio/${name}`);
+
+    try {
+        await storageRef.delete();
+    } catch (err) {
+        console.error("An error occured.")
+    }
+}
+
+export { fetchAbout, updateAbout, firebaseUpload, firebaseRemove };

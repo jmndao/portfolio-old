@@ -70,11 +70,11 @@ export const firebaseUploderReducer = (state = {}, action) => {
 
     switch (action.type) {
         case FIREBASE_UPLOAD_PROGRESS:
-            return { onProgress: true, id: action.payload }
+            return { onProgress: true, onComplete: false }
         case FIREBASE_UPLOAD_ERROR:
-            return { onProgress: false, uploadError: action.payload }
+            return { onProgress: false, onComplete: false, uploadError: action.payload }
         case FIREBASE_UPLOAD_END:
-            return { onProgress: false, fileUrl: action.payload }
+            return { onProgress: false, onComplete: true, fileUrl: action.payload }
         default:
             return state;
     }
