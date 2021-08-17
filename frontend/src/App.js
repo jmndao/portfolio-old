@@ -17,10 +17,10 @@ function App() {
       <AppMenu />
       <Route path='/' exact component={HomeScreen} />
       <Route path='/about' component={About} />
-      <Route path='/project' component={Project} />
+      <Route path='/project' exact component={Project} />
       <Route path='/contact' component={Contact} />
       <Route path='/jCode' component={Jcode} />
-      <Route path='/admin' component={Admin} />
+      <Route path='/admin' exact component={Admin} />
       <Route path='/login' component={Login} />
       <BackTop />
     </Router>

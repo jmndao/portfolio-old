@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import { Button, Form, Input, Space, Spin, Upload } from "antd";
+import { Button, Form, Input, message, Space, Spin, Upload } from "antd";
 import { fetchAbout } from "../actions/about.action";
 import { useDispatch, useSelector } from "react-redux";
-import { MinusCircleOutlined, PlusOutlined, UploadOutlined, LoadingOutlined } from "@ant-design/icons";
-import { firebaseUpload, firebaseRemove } from "../actions/about.action";
+import { MinusCircleOutlined, PlusOutlined, UploadOutlined } from "@ant-design/icons";
+import { firebaseUpload, firebaseRemove, updateAbout } from "../actions/about.action";
 
 const AboutForm = () => {
 
@@ -14,6 +14,9 @@ const AboutForm = () => {
 
     //const firebaseUploader = useSelector(state => state.firebaseUploader);
     //const { onProgress, uploadError, onComplete, fileUrl, id } = firebaseUploader;
+
+    const aboutUpdate = useSelector(state => state.aboutUpdate)
+    const { loading: loadingUpdate, success, error:errorUpdate } = aboutUpdate;
 
     const onFinishFailed = () => {
         console.log('Form Submission failed');
@@ -28,26 +31,21 @@ const AboutForm = () => {
     }
 
     const onFinish = (values) => {
-        console.log(values);
-    }
-
-    const normFile = (e) => {
-        console.log("Hello World")
-        if (Array.isArray(e)) {
-            return e;
-        }
-
-        return e && e.fileList;
+        dispatch(updateAbout(values));
     }
 
     useEffect(() => {
         dispatch(fetchAbout());
-    }, [dispatch]);
+        if (success) {
+            //window.location.reload();
+            message.success("This form has been successfully updated")
+        }
+    }, [dispatch, success]);
 
     return (
         <>
-            {loading ? <Spin tip='Loading...' /> : error ? (
-                <div className='contact-error'>{error}</div>)
+            { loading || loadingUpdate ? <Spin tip='Loading...' /> : error || errorUpdate ? (
+                <div className='contact-error'>{error || errorUpdate}</div>)
                 : (
                     <Form name='aboutForm' onFinish={onFinish} onFinishFailed={onFinishFailed}>
                         <fieldset>
@@ -114,8 +112,6 @@ const AboutForm = () => {
                                                             <Button icon={<UploadOutlined />}>Click to Upload</Button>
                                                         </Upload>
 
-                                                        {/*onProgress && key === id && (<Spin key={fieldKey} size='small' indicator={<LoadingOutlined />} />)*/}
-                                                        {/* uploadError && key === id(<div key={fieldKey} className="contact-error">{uploadError}</div>)*/}
                                                     </Form.Item>
                                                     <Form.Item name={[name, "description"]} fieldKey={[fieldKey, "description"]}>
                                                         <Input.TextArea placeholder='Description' />
@@ -147,10 +143,12 @@ const AboutForm = () => {
                                                     <Form.Item
                                                         name={[name, "flag"]}
                                                         fieldKey={[fieldKey, "flag"]}
-                                                        getValueFromEvent={normFile}
-                                                        valuePropName='Flag'
                                                     >
-                                                        <Upload name='flag'>
+                                                        <Upload 
+                                                            name='flag'
+                                                            customRequest={(e) => firebaseUploadHandler(e)}
+                                                            onRemove={(e) => firebaseRemoveHandler(e)}
+                                                        >
                                                             <Button icon={<UploadOutlined />}>Click to Upload</Button>
                                                         </Upload>
                                                     </Form.Item>
@@ -184,10 +182,12 @@ const AboutForm = () => {
                                                     <Form.Item
                                                         name={[name, "image"]}
                                                         fieldKey={[fieldKey, "image"]}
-                                                        getValueFromEvent={normFile}
-                                                        valuePropName='Image'
                                                     >
-                                                        <Upload name='image'>
+                                                        <Upload 
+                                                            name='image'
+                                                            customRequest={(e) => firebaseUploadHandler(e)}
+                                                            onRemove={(e) => firebaseRemoveHandler(e)}
+                                                        >
                                                             <Button icon={<UploadOutlined />}>Click to Upload</Button>
                                                         </Upload>
                                                     </Form.Item>
@@ -299,10 +299,12 @@ const AboutForm = () => {
                                                     <Form.Item
                                                         name={[name, "image"]}
                                                         fieldKey={[fieldKey, "image"]}
-                                                        getValueFromEvent={normFile}
-                                                        valuePropName='Image'
                                                     >
-                                                        <Upload name='image'>
+                                                        <Upload 
+                                                            name='image'
+                                                            customRequest={(e) => firebaseUploadHandler(e)}
+                                                            onRemove={(e) => firebaseRemoveHandler(e)}
+                                                        >
                                                             <Button icon={<UploadOutlined />}>Click to Upload</Button>
                                                         </Upload>
                                                     </Form.Item>

@@ -2,6 +2,7 @@ import React from "react";
 import { Tabs, Row, Col} from "antd";
 import { AppleOutlined, AndroidOutlined } from "@ant-design/icons";
 import AboutForm from "../components/AboutForm";
+import ProjectListing from "../components/ProjectListing";
 
 
 const Admin = () => {
@@ -34,7 +35,7 @@ const Admin = () => {
                                 }
                                 key="projects"
                             >
-                                Projects
+                                <ProjectListing />
                             </TabPane>
                             <TabPane
                                 tab={

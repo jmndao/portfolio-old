@@ -1,0 +1,25 @@
+:root {
+    --light: #eee;
+    --divider: #495057;
+    --bg: #232B2B;
+    --white: #fff;
+}
+
+.new-project {
+    background-color: var(--light);
+    min-height: 100vh;
+    width: 100%;
+}
+
+.new-project {
+    color: var(--bg);
+}
+
+.new-project-wrapper {
+    padding-top: 100px;
+}
+
+.new-project-wrapper {
+    width: 60%;
+    margin: 10px auto;
+}

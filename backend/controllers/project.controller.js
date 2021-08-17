@@ -1,6 +1,38 @@
 import asyncHandler from "express-async-handler";
 import Project from "../models/project.model.js";
 
+// @desc    Create a new Project
+// @route   POST /api/projects
+// @access  Private|Admin
+const createProject = asyncHandler(async(req, res) => {
+    const {
+        name,
+        image,
+        description,
+        private: isPrivate,
+        doneAt,
+        website,
+        participant,
+    } = req.body;
+
+    const newProject = await Project.create({
+        name,
+        image,
+        description,
+        private: isPrivate,
+        doneAt,
+        website,
+        participant,
+    });
+
+    if (newProject) {
+        res.json(newProject).status(201);
+    } else {
+        res.status(400);
+        throw new Error("Project creation failed.");
+    }
+});
+
 // @desc    GET all projects
 // @route   GET /api/projects
 // @access  Public
@@ -88,4 +120,10 @@ const deleteProject = asyncHandler(async(req, res) => {
     }
 });
 
-export { getProjects, getProjectDetail, updateProject, deleteProject };
+export {
+    getProjects,
+    getProjectDetail,
+    updateProject,
+    deleteProject,
+    createProject,
+};
