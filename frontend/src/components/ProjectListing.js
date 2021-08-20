@@ -23,28 +23,6 @@ const ProjectListing = () => {
             message.success("Project deleted successfully.");
         }
     }, [dispatch, successDelete]);
-    
-    // const handleNewProjectCreation = () => {
-    //     createForm.validateFields().then(
-    //         (values) => {
-    //             values = {
-    //                 ...values,
-    //                 'doneAt': values['doneAt'].format('YYYY-MM-DD'),
-    //                 'image': values['image'].file.response,
-    //             };
-    //             createForm.resetFields();
-    //             dispatch(createProject(values));
-    //         }
-    //     ).catch(err => console.log(err))
-    // };
-
-    // const firebaseRemoveHandler = e => {
-    //     dispatch(firebaseRemove(e));
-    // }
-
-    // const firebaseUploadHandler = e => {
-    //     dispatch(firebaseUpload(e))
-    // }
 
     const deleteHandler = (id) => {
         if (window.confirm('Are you sure ?')) {
@@ -54,23 +32,6 @@ const ProjectListing = () => {
 
     return (
         <div>
-            {/* <Modal
-                visible={createModalVisible}
-                title="Create a new project"
-                okText="Create"
-                cancelText="Cancel"
-                onCancel={handleCancel}
-                onOk={() => handleNewProjectCreation()}
-            >
-
-                <CreateProjectForm
-                    createForm={createForm}
-                    firebaseRemoveHandler={firebaseRemoveHandler}
-                    firebaseUploadHandler={firebaseUploadHandler}
-                    loading={loadingCreate}
-                    error={errorCreate}
-                />
-            </Modal> */}
             {error || errorDelete ? (<div className="contact-error">{error || errorDelete}</div>) : (
                 <List
                     className="demo-loadmore-list"

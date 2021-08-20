@@ -44,12 +44,12 @@ const deleteProject = (id) => async(dispatch, getState) => {
 
         const config = {
             headers: {
-                "Content-Type": "application/json",
+                'content-type': 'application/json',
                 Authorization: `Bearer ${userInfo.token}`,
             },
         };
 
-        await axios.delete(`api/projects/${id}`, config);
+        await axios.delete(`/api/projects/${id}`, config);
 
         dispatch({ type: PROJECT_DELETE_SUCCESS });
     } catch (error) {
@@ -77,7 +77,7 @@ const createProject = (project) => async(dispatch, getState) => {
             },
         };
 
-        await axios.post(`api/projects`, project, config);
+        await axios.post(`/api/projects`, project, config);
 
         dispatch({ type: PROJECT_CREATE_SUCCESS });
     } catch (error) {
@@ -105,7 +105,7 @@ const updateProject = (project) => async(dispatch, getState) => {
             },
         };
 
-        const { updatedProject } = await axios.put(`api/projects`, project, config);
+        const { updatedProject } = await axios.put(`/api/projects`, project, config);
 
         dispatch({ type: PROJECT_UPDATE_SUCCESS, payload: updatedProject });
     } catch (error) {
@@ -131,8 +131,8 @@ const getProject = (id) => async(dispatch, getState) => {
                 Authorization: `Bearer ${userInfo.token}`,
             },
         };
-        console.log(id);
-        const { project } = await axios.get(`api/projects/${id}`, config);
+
+        const { project } = await axios.get(`/api/projects/${id}`, config);
 
         dispatch({ type: PROJECT_GET_SUCCESS, payload: project });
     } catch (error) {

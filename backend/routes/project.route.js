@@ -17,5 +17,4 @@ router
     .put(protect, admin, updateProject)
     .delete(protect, admin, deleteProject);
 
-
 export default router;
