@@ -18,7 +18,8 @@ ul.ant-menu.ant-menu-root.ant-menu-inline.ant-menu-light {
     background-color: #eee;
 }
 
-.admin-page-display-section {
+.admin-page-display-section,
+.admin-project-display-section {
     position: relative;
     top: 0;
     left: calc(var(--sidebar-width) + 5px);
@@ -28,7 +29,8 @@ ul.ant-menu.ant-menu-root.ant-menu-inline.ant-menu-light {
 
 /* Admin/About */
 
-.admin-about-form-wrapper {
+.admin-about-form-wrapper,
+.admin-project-wrapper {
     padding: 20px;
     width: calc(90% - var(--sidebar-width));
     height: auto;

@@ -7,7 +7,6 @@ import Project from "./screens/Project";
 import Contact from "./screens/Contact";
 import Jcode from "./screens/Jcode";
 import { BackTop } from "antd";
-import Admin from "./screens/Admin";
 import Login from "./screens/Login";
 import AdminProject from "./screens/AdminProject";
 import AdminProjectNew from "./screens/AdminProjectNew";
