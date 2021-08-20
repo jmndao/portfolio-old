@@ -4,6 +4,7 @@ import { SendOutlined, ContactsOutlined, AimOutlined } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { submitForm } from "../actions/contact.action";
 import AppFooter from "../components/AppFooter";
+import AppMenu from "../components/AppMenu";
 
 const Contact = () => {
 
@@ -38,7 +39,7 @@ const Contact = () => {
         },
     };
 
-    const [contactForm]  = Form.useForm();
+    const [contactForm] = Form.useForm();
 
     const formSubmitHandler = (values) => {
         if (values) {
@@ -46,7 +47,7 @@ const Contact = () => {
             setEmail(values.email);
             setMessage(values.message);
 
-            dispatch(submitForm( values.name, values.email, values.message ));
+            dispatch(submitForm(values.name, values.email, values.message));
             openNotificationWithIcon('success', values.name, formMessage.message);
             contactForm.resetFields();
 
@@ -59,93 +60,98 @@ const Contact = () => {
     };
 
     return (
-        <div className="contact-screen">
-            <div className="contact-image">
-                <div className="contact-wrapper">
-                    <div className="container">
-                        <Row gutter={[16, 8]} align='middle' justify='center'>
-                            <Col sm={24} md={12}>
-                                <Card className="contact-card-card">
-                                    <IconText
-                                        icon={ContactsOutlined}
-                                        text="Contact"
-                                        key="list-vertical-like-o"
-                                    />
-                                    <p className="contact-card-content">+221 77 xxx xx xx</p>
-                                </Card>
-                            </Col>
-                            <Col sm={24} md={12}>
-                                <Card className="contact-card-card">
-                                    <IconText
-                                        icon={AimOutlined}
-                                        text="Address"
-                                        key="list-vertical-like-o"
-                                    />
-                                    <p className="contact-card-content">Dakar/Senegal, Castor street 1 | Villa 2</p>
-                                </Card>
-                            </Col>
-                        </Row>
-                        <div className="contact-form-glass">
-                            <div className="contact-form-glass-in">
-                                <div className="contact-form-wrapper">
-                                    {loading && <Spin tip='Loading...' size='large' />}
-                                    {error && <div className="contact-error">{error}</div>}
-                                    <Form
-                                        form={contactForm}
-                                        onFinish={formSubmitHandler}
-                                        validateMessages={validateMessages}
-                                        layout="vertical"
-                                    >
-                                        <Form.Item
-                                            name="name"
-                                            label="Name"
-                                            rules={[
-                                                { required: true },
-                                            ]}
-                                            value={name}
+        <>
+            <AppMenu 
+                currentPage="contact"
+            />
+            <div className="contact-screen">
+                <div className="contact-image">
+                    <div className="contact-wrapper">
+                        <div className="container">
+                            <Row gutter={[16, 8]} align='middle' justify='center'>
+                                <Col sm={24} md={12}>
+                                    <Card className="contact-card-card">
+                                        <IconText
+                                            icon={ContactsOutlined}
+                                            text="Contact"
+                                            key="list-vertical-like-o"
+                                        />
+                                        <p className="contact-card-content">+221 77 xxx xx xx</p>
+                                    </Card>
+                                </Col>
+                                <Col sm={24} md={12}>
+                                    <Card className="contact-card-card">
+                                        <IconText
+                                            icon={AimOutlined}
+                                            text="Address"
+                                            key="list-vertical-like-o"
+                                        />
+                                        <p className="contact-card-content">Dakar/Senegal, Castor street 1 | Villa 2</p>
+                                    </Card>
+                                </Col>
+                            </Row>
+                            <div className="contact-form-glass">
+                                <div className="contact-form-glass-in">
+                                    <div className="contact-form-wrapper">
+                                        {loading && <Spin tip='Loading...' size='large' />}
+                                        {error && <div className="contact-error">{error}</div>}
+                                        <Form
+                                            form={contactForm}
+                                            onFinish={formSubmitHandler}
+                                            validateMessages={validateMessages}
+                                            layout="vertical"
                                         >
-                                            <Input />
-                                        </Form.Item>
-                                        <Form.Item
-                                            name="email"
-                                            label="Email"
-                                            rules={[
-                                                { type: "email" },
-                                            ]}
-                                            value={email}
-                                        >
-                                            <Input />
-                                        </Form.Item>
-                                        <Form.Item
-                                            name="message"
-                                            label="Message"
-                                            value={message}
-                                        >
-                                            <Input.TextArea />
-                                        </Form.Item>
-                                        <Form.Item className="center">
-                                            <Button
-                                                type="primary"
-                                                htmlType="submit"
-                                                icon={<SendOutlined />}
-                                                shape="round"
-                                                size="large"
+                                            <Form.Item
+                                                name="name"
+                                                label="Name"
+                                                rules={[
+                                                    { required: true },
+                                                ]}
+                                                value={name}
                                             >
-                                                Submit
-                                            </Button>
-                                        </Form.Item>
-                                    </Form>
+                                                <Input />
+                                            </Form.Item>
+                                            <Form.Item
+                                                name="email"
+                                                label="Email"
+                                                rules={[
+                                                    { type: "email" },
+                                                ]}
+                                                value={email}
+                                            >
+                                                <Input />
+                                            </Form.Item>
+                                            <Form.Item
+                                                name="message"
+                                                label="Message"
+                                                value={message}
+                                            >
+                                                <Input.TextArea />
+                                            </Form.Item>
+                                            <Form.Item className="center">
+                                                <Button
+                                                    type="primary"
+                                                    htmlType="submit"
+                                                    icon={<SendOutlined />}
+                                                    shape="round"
+                                                    size="large"
+                                                >
+                                                    Submit
+                                                </Button>
+                                            </Form.Item>
+                                        </Form>
+                                    </div>
                                 </div>
+                                <AppFooter />
+
                             </div>
-                            <AppFooter />
 
                         </div>
 
                     </div>
-
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 

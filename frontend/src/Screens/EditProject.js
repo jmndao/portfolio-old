@@ -1,4 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { firebaseRemove, firebaseUpload } from "../actions/about.action";
+import { getProject, updateProject } from "../actions/project.action";
 import {
     Form,
     Input,
@@ -11,22 +15,42 @@ import {
 } from "antd";
 import { MinusCircleOutlined, PlusOutlined, UploadOutlined, LoadingOutlined } from "@ant-design/icons";
 
-const CreateProjectForm = ({ firebaseRemoveHandler, firebaseUploadHandler, createForm, loadingCreate, errorCreate }) => {
 
-    const participant = [{
-        name: "",
-        pseudo: "",
-        image: "",
-    }];
+
+
+const EditProject = ({ match }) => {
+    const projectId = match.params.id;
+    
+    const projectGet = useSelector(state => state.projectGet)
+    const { loading, error, project } = projectGet;
+    
+    const projectUpdate = useSelector(state => state.projectUpdate)
+    const { loading:loadingUpdate, error:errorUpdate, success } = projectUpdate;
+
+    const [editForm] = Form.useForm();
+
+    const dispatch = useDispatch();
+
+    const firebaseRemoveHandler = e => {
+        dispatch(firebaseRemove(e));
+    }
+    
+    const firebaseUploadHandler = e => {
+        dispatch(firebaseUpload(e))
+    }
+
+    useEffect(() => {
+        dispatch(getProject(projectId))
+    }, [dispatch, projectId]);
 
     return (
         <div>
-            <Form form={createForm}>
-                {loadingCreate ? <Spin tip='Creating...' indicator={<LoadingOutlined />} />
-                    : errorCreate ? <div className="contact-error">{errorCreate}</div>
+            <Button type='primary'><Link to='/admin/'>Return</Link></Button>
+            <Form form={editForm} initialValues={project}>
+                {loading || loadingUpdate ? <Spin tip='Creating...' indicator={<LoadingOutlined />} />
+                    : error || errorUpdate ? <div className="contact-error">{error || errorUpdate}</div>
                         : (
                             <>
-
                                 <Form.Item label="Name" name="name">
                                     <Input />
                                 </Form.Item>
@@ -49,7 +73,7 @@ const CreateProjectForm = ({ firebaseRemoveHandler, firebaseUploadHandler, creat
                                     </Form.Item>
                                 </fieldset>
                                 <Form.Item label="Private" name="private">
-                                    <Switch defaultChecked={true} />
+                                    <Switch />
                                 </Form.Item>
                                 <Form.Item label="Done" name="doneAt">
                                     <DatePicker />
@@ -59,7 +83,7 @@ const CreateProjectForm = ({ firebaseRemoveHandler, firebaseUploadHandler, creat
                                 </Form.Item>
                                 <fieldset>
                                     <legend>Participant</legend>
-                                    <Form.List name="participant" initialValue={participant}>
+                                    <Form.List name="participant" initialValue={ project && project.participant}>
                                         {(fields, { add, remove }) => {
                                             return (
                                                 <>
@@ -104,4 +128,4 @@ const CreateProjectForm = ({ firebaseRemoveHandler, firebaseUploadHandler, creat
     )
 }
 
-export default CreateProjectForm;
+export default EditProject;

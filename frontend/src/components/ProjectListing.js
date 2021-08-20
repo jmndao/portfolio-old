@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Skeleton, List, Avatar, Button, Tooltip, Modal, Form, message } from "antd";
 import { listProjects, deleteProject, createProject } from "../actions/project.action";
-import { DeleteOutlined, EditOutlined, EyeOutlined } from "@ant-design/icons";
+import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import CreateProjectForm from "./CreateProjectForm";
 import { firebaseRemove, firebaseUpload } from "../actions/about.action";
 
@@ -15,18 +15,13 @@ const ProjectListing = () => {
     const [createForm] = Form.useForm();
 
     const [createModalVisible, setCreateModalVisible] = useState(false);
-    const [editModalVisible, setEditModalVisible] = useState(false);
 
     const showCreateProjectForm = () => {
-        if (editModalVisible) {
-            setEditModalVisible(false);
-        }
         setCreateModalVisible(true);
     };
 
     const handleCancel = () => {
         setCreateModalVisible(false);
-        setEditModalVisible(false);
     };
 
     const getProjects = useSelector(state => state.getProjects)
@@ -60,7 +55,7 @@ const ProjectListing = () => {
                 dispatch(createProject(values));
             }
         ).catch(err => console.log(err))
-    }
+    };
 
     const firebaseRemoveHandler = e => {
         dispatch(firebaseRemove(e));
@@ -115,16 +110,7 @@ const ProjectListing = () => {
                                     />
                                 </Tooltip>,
                                 <Tooltip placement='bottom' title='Edit'>
-                                    <Button
-                                        type='link'
-                                        icon={<EditOutlined />}
-                                    ><Link to={`admin/projects/edit/${item._id}`} /></Button>
-                                </Tooltip>,
-                                <Tooltip placement='bottom' title='View'>
-                                    <Button
-                                        type='link'
-                                        icon={<EyeOutlined />}
-                                    ><Link to={`admin/projects/${item._id}`} /></Button>
+                                    <Link to={`/admin/projects/edit/${item._id}`}>{<EditOutlined />}</Link>
                                 </Tooltip>
                             ]}
                         >

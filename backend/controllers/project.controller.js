@@ -75,7 +75,7 @@ const updateProject = asyncHandler(async(req, res) => {
         participant,
     } = req.body;
     // Get the project to update by id
-    const project = await Project.findById(req.params.id);
+    const project = await Project.findOne({ name });
 
     // check if the project exist
     if (project) {

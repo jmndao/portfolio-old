@@ -1,15 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import LogoNav from "../images/jlogo.svg";
 import { Link } from "react-router-dom";
 import { Button, Menu } from "antd";
 import { UnorderedListOutlined } from "@ant-design/icons";
 import Avatar from "antd/lib/avatar/avatar";
 
-const AppMenu = () => {
-    const [current, setCurrent] = useState("home");
-    const handleClick = (e) => {
-        setCurrent(e.key);
-    };
+const AppMenu = ({ currentPage }) => {
+    
 
     return (
         <header className="menu-header">
@@ -21,8 +18,7 @@ const AppMenu = () => {
                 />
             </div>
             <Menu
-                onClick={handleClick}
-                selectedKeys={[current]}
+                selectedKeys={currentPage}
                 mode="horizontal"
                 className="myNav"
                 overflowedIndicator={<UnorderedListOutlined />}

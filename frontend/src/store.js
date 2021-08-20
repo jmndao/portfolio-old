@@ -3,7 +3,7 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { userLoginReducer } from "./reducers/user.reducer";
 import { getAboutReducer, aboutUpdateReducer, firebaseUploderReducer } from "./reducers/about.reducer";
-import { getProjectsReducer, projectCreateReducer, projectDeleteReducer } from "./reducers/project.reducer";
+import { getProjectsReducer, projectCreateReducer, projectDeleteReducer, projectGetReducer, projectUpdateReducer } from "./reducers/project.reducer";
 import { formSubmitReducer } from "./reducers/contact.reducer";
 import { resumeDownloadReducer } from "./reducers/home.reducer";
 
@@ -17,6 +17,8 @@ const reducers = combineReducers({
     firebaseUploader: firebaseUploderReducer,
     projectDelete: projectDeleteReducer,
     projectCreate: projectCreateReducer,
+    projectUpdate: projectUpdateReducer,
+    projectGet: projectGetReducer
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo") ?

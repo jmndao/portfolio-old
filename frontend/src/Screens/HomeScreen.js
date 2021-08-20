@@ -33,6 +33,7 @@ import { downloadResume } from "../actions/home.action";
 import { fetchAbout } from "../actions/about.action";
 import { submitForm } from "../actions/contact.action";
 import { listProjects } from "../actions/project.action";
+import AppMenu from "../components/AppMenu";
 
 
 const HomeScreen = () => {
@@ -105,6 +106,9 @@ const HomeScreen = () => {
 
     return (
         <>
+            <AppMenu 
+                currentPage="home"
+            />
             <div className="home-app">
                 <Row gutter={16}>
                     <Col sm={24} md={12}>
