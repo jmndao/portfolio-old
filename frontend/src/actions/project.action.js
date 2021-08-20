@@ -128,13 +128,15 @@ const getProject = (id) => async(dispatch, getState) => {
 
         const config = {
             headers: {
+                "Content-Type": "application/json",
                 Authorization: `Bearer ${userInfo.token}`,
             },
         };
 
-        const { project } = await axios.get(`/api/projects/${id}`, config);
+        const { data } = await axios.get(`/api/projects/${id}`, config);
+        console.log(data);
 
-        dispatch({ type: PROJECT_GET_SUCCESS, payload: project });
+        dispatch({ type: PROJECT_GET_SUCCESS, payload: data });
     } catch (error) {
         dispatch({
             type: PROJECT_GET_FAIL,

@@ -49,7 +49,7 @@ const ProjectListing = () => {
                                     />
                                 </Tooltip>,
                                 <Tooltip placement='bottom' title='Edit'>
-                                    <Link to={`/admin/projects/edit/${item._id}`}>{<EditOutlined />}</Link>
+                                    <Link to={`/admin/projects/${item._id}/edit`}>{<EditOutlined />}</Link>
                                 </Tooltip>
                             ]}
                         >

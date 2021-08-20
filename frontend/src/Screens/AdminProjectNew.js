@@ -8,6 +8,7 @@ const AdminProjectNew = () => {
             <div className="admin-page-display-section">
                 <Admin />
                 <div className="admin-project-new-wrapper">
+                    <h1>Project Creation</h1>
                     <ProjectCreation />
                 </div>
             </div>

@@ -34,7 +34,7 @@ const Admin = () => {
                     </Menu.Item>
                 </SubMenu>
                 <Menu.Item key="4" icon={<MessageOutlined />}>
-                    Contacts
+                    <Link to='/admin/contacts'>Contacts</Link>
                 </Menu.Item>
                 <SubMenu key="sub2" icon={<CodeOutlined />} title="JCodes">
                     <Menu.Item key="5">

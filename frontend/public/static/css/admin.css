@@ -30,6 +30,7 @@ ul.ant-menu.ant-menu-root.ant-menu-inline.ant-menu-light {
 /* Admin/About */
 
 .admin-about-form-wrapper,
+.admin-page-wrapper,
 .admin-project-wrapper,
 .admin-project-new-wrapper {
     padding: 20px;
