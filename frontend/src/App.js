@@ -17,6 +17,7 @@ import AdminJCodeNew from "./screens/AdminJCodeNew";
 import AdminJCodeEdit from "./screens/AdminJCodeEdit";
 import Settings from "./screens/Settings";
 import AdminAbout from "./screens/AdminAbout";
+import JcodeItem from "./screens/JcodeItem";
 
 function App() {
   return (
@@ -25,7 +26,8 @@ function App() {
       <Route path='/about' component={About} />
       <Route path='/project' exact component={Project} />
       <Route path='/contact' component={Contact} />
-      <Route path='/jCode' component={Jcode} />
+      <Route path='/jCode' exact component={Jcode} />
+      <Route path='/jCode/:id' component={JcodeItem} />
       <Route path='/login' component={Login} />
       {/* Admin Section | Admin/about */}
       <Route path='/admin' exact component={AdminAbout} />

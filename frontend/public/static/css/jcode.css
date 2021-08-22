@@ -1,0 +1,42 @@
+:root {
+    --light: #eee;
+    --timeline-link: #1890ff;
+    --header-link-hover: #232B2B;
+    --header-link-hover-icon: #eee;
+    --timeline-date: #ced4da;
+    --divider: #495057;
+    --bg: #232B2B;
+    --bg-project: #fff;
+    --bg-rgb: 14, 18, 18;
+    --nav-height: 50px;
+}
+
+.jcode-top-img {
+    height: 500px;
+    width: 100%;
+    background-color: var(--light);
+    margin-top: calc(var(--nav-height) - 1px);
+}
+
+.jcode-text-content-h {
+    font-weight: 700;
+    font-size: 1.8rem;
+    line-height: 30px;
+}
+
+.jcode-text-content {
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--bg);
+    width: 50%;
+    margin: 1rem auto;
+}
+
+.jcode-text-content p {
+    line-height: 48px;
+}
+
+.jcode-content {
+    width: 95%;
+    margin: 1rem auto;
+}
