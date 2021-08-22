@@ -98,7 +98,7 @@ const AdminJCodeNew = () => {
                                         return (
                                             <>
                                                 {fields.map(({ key, name, fieldKey, ...restField }) => (
-                                                    <Space key={key} style={{ marginBottom: 8 }}>
+                                                    <Space key={key} style={{ display: 'block', marginBottom: 8 }}>
                                                         <Form.Item name={[name, "title"]} fieldKey={[fieldKey, "title"]}>
                                                             <Input placeholder='Title' />
                                                         </Form.Item>
