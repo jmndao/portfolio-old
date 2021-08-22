@@ -13,7 +13,6 @@ const AdminProjectEdit = ({ match }) => {
 
     const projectID = match.params.id;
 
-    const dateFormat = 'YYYY-MM-DD'
     const [editForm] = Form.useForm();
     const dispatch = useDispatch();
 

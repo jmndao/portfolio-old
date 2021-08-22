@@ -48,6 +48,22 @@ const getSingleContact = asyncHandler(async(req, res) => {
     }
 });
 
+// @desc    Delete a contact
+// @route   GET /api/contact/:id
+// @access  Private|Admin
+const deleteContact = asyncHandler(async(req, res) => {
+    // Get the contact to delete
+    const contact = await Contact.findById(req.params.id);
+
+    if (contact) {
+        await contact.remove();
+        res.status(201).json({ message: "Contact removed successfully." });
+    } else {
+        res.status(404);
+        throw new Error("Contact not found.");
+    }
+})
 
 
-export { submitForm, getSingleContact, getContacts };
+
+export { submitForm, getSingleContact, getContacts, deleteContact };

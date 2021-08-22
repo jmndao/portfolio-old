@@ -4,6 +4,7 @@ const jCodeSchema = mongoose.Schema({
 
     project: { type: String, required: true },
     description: { type: String, required: true },
+    image: { type: String, required: true },
     section: [{
         title: { type: String, required: true },
         mode: { type: String, required: true },
@@ -19,6 +20,6 @@ const jCodeSchema = mongoose.Schema({
 
 }, { timestamps: true });
 
-const JCode = mongoose.Model('JCode', jCodeSchema);
+const JCode = mongoose.model('JCode', jCodeSchema);
 
 export default JCode;

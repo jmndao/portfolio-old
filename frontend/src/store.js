@@ -4,21 +4,29 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import { userLoginReducer } from "./reducers/user.reducer";
 import { getAboutReducer, aboutUpdateReducer, firebaseUploderReducer } from "./reducers/about.reducer";
 import { getProjectsReducer, projectCreateReducer, projectDeleteReducer, projectGetReducer, projectUpdateReducer } from "./reducers/project.reducer";
-import { formSubmitReducer } from "./reducers/contact.reducer";
+import { contactDeleteReducer, contactsGetReducer, formSubmitReducer } from "./reducers/contact.reducer";
 import { resumeDownloadReducer } from "./reducers/home.reducer";
+import { jcodeCreateReducer, jcodeDeleteReducer, jcodeGetReducer, jcodeListReducer, jcodeUpdateReducer } from "./reducers/jcode.reducer";
 
 const reducers = combineReducers({
     userLogin: userLoginReducer,
     getAbout: getAboutReducer,
     getProjects: getProjectsReducer,
     formSubmit: formSubmitReducer,
+    contactsGet: contactsGetReducer,
+    contactDelete: contactDeleteReducer,
     resumeDownload: resumeDownloadReducer,
     aboutUpdate: aboutUpdateReducer,
     firebaseUploader: firebaseUploderReducer,
     projectDelete: projectDeleteReducer,
     projectCreate: projectCreateReducer,
     projectUpdate: projectUpdateReducer,
-    projectGet: projectGetReducer
+    projectGet: projectGetReducer,
+    jcodeGet: jcodeGetReducer,
+    jcodeList: jcodeListReducer,
+    jcodeCreate: jcodeCreateReducer,
+    jcodeDelete: jcodeDeleteReducer,
+    jcodeUpdate: jcodeUpdateReducer
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo") ?

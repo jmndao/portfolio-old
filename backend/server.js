@@ -7,6 +7,7 @@ import aboutRoute from "./routes/about.route.js";
 import projectRoute from "./routes/project.route.js";
 import contactRoute from "./routes/contact.route.js";
 import homeRoute from "./routes/home.route.js";
+import jcodeRoute from "./routes/jcode.route.js";
 import { notFound, errorHandler } from "./middlewares/errorMiddleware.js";
 
 dotenv.config();
@@ -30,6 +31,7 @@ app.use('/api/about', aboutRoute);
 app.use('/api/projects', projectRoute);
 app.use('/api/contact', contactRoute);
 app.use('/api/download', homeRoute);
+app.use('/api/jcodes', jcodeRoute);
 app.use(notFound);
 app.use(errorHandler);
 

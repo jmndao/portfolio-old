@@ -134,7 +134,6 @@ const getProject = (id) => async(dispatch, getState) => {
         };
 
         const { data } = await axios.get(`/api/projects/${id}`, config);
-        console.log(data);
 
         dispatch({ type: PROJECT_GET_SUCCESS, payload: data });
     } catch (error) {
