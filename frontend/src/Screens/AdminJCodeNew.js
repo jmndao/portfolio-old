@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Admin from "./Admin";
 import { Form, Input, Button, Switch, Space, Upload, Spin, message } from "antd";
-import { LoadingOutlined, MinusCircleOutlined, UploadOutlined, PlusOutlined } from "@ant-design/icons";
+import { LoadingOutlined, MinusCircleOutlined, UploadOutlined, PlusOutlined, DeleteOutlined } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { firebaseRemove, firebaseUpload } from "../actions/about.action";
 import { createJCode } from "../actions/jcode.action";
@@ -81,13 +81,16 @@ const AdminJCodeNew = () => {
                             >
                                 <Upload
                                     name='image'
+                                    placeholder='Image'
                                     customRequest={(e) => firebaseUploadHandler(e)}
                                     onRemove={(e) => firebaseRemoveHandler(e)}
                                 >
                                     <Button icon={<UploadOutlined />}>Click to Upload</Button>
                                 </Upload>
                             </Form.Item>
-
+                            <Form.Item label="Link" name="link">
+                                <Input />
+                            </Form.Item>
                             <fieldset>
                                 <legend>Sections</legend>
                                 <Form.List name="section" initialValue={section}>
@@ -120,7 +123,7 @@ const AdminJCodeNew = () => {
                                                                                     <Form.Item name={[name, "url"]} fieldKey={[fieldKey, "url"]}>
                                                                                         <Input placeholder='Url' />
                                                                                     </Form.Item>
-                                                                                    <Form.Item label="Vide" name="video">
+                                                                                    <Form.Item label="Video" name="video">
                                                                                         <Switch defaultChecked={true} />
                                                                                     </Form.Item>
                                                                                     <MinusCircleOutlined onClick={() => remove(name)} />
@@ -137,7 +140,7 @@ const AdminJCodeNew = () => {
                                                             </Form.List>
                                                         </fieldset>
                                                         </div>
-                                                        <MinusCircleOutlined onClick={() => remove(name)} />
+                                                        <DeleteOutlined onClick={() => remove(name)} />
                                                     </Space>
                                                 ))}
                                                 <Form.Item>
@@ -150,9 +153,6 @@ const AdminJCodeNew = () => {
                                     }}
                                 </Form.List>
                             </fieldset>
-                            <Form.Item label="Link" name="link">
-                                <Input />
-                            </Form.Item>
                             <fieldset>
                                 <legend>Mentions</legend>
                                 <Form.List name="mention" initialValue={mention}>

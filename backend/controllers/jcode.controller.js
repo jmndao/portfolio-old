@@ -78,7 +78,7 @@ const updateJCode = asyncHandler(async(req, res) => {
         mention
     } = req.body;
     // Find the jcode to update
-    const jcode = await JCode.findById(_id);
+    const jcode = await JCode.findById(req.params.id);
 
     if (jcode) {
         jcode.project = project || jcode.project;

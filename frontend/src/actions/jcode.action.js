@@ -28,8 +28,7 @@ const listJCode = () => async(dispatch) => {
         dispatch({
             type: JCODE_LIST_FAIL,
             payload: err.response && err.response.data.message ?
-                err.response.data.message :
-                err.message,
+                err.response.data.message : err.message,
         });
     }
 };
@@ -57,8 +56,7 @@ const deleteJCode = (id) => async(dispatch, getState) => {
         dispatch({
             type: JCODE_DELETE_FAIL,
             payload: error.response && error.response.data.message ?
-                error.response.data.message :
-                error.message,
+                error.response.data.message : error.message,
         });
     }
 };
@@ -86,8 +84,7 @@ const createJCode = (jcode) => async(dispatch, getState) => {
         dispatch({
             type: JCODE_CREATE_FAIL,
             payload: error.response && error.response.data.message ?
-                error.response.data.message :
-                error.message,
+                error.response.data.message : error.message,
         });
     }
 };
@@ -108,15 +105,14 @@ const updateJCode = (jcode) => async(dispatch, getState) => {
             },
         };
 
-        const { updatedJCode } = await axios.put(`/api/jcodes`, jcode, config);
+        const { updatedJCode } = await axios.put(`/api/jcodes/${jcode.jcodeID}`, jcode, config);
 
         dispatch({ type: JCODE_UPDATE_SUCCESS, payload: updatedJCode });
     } catch (error) {
         dispatch({
             type: JCODE_UPDATE_FAIL,
             payload: error.response && error.response.data.message ?
-                error.response.data.message :
-                error.message,
+                error.response.data.message : error.message,
         });
     }
 };
@@ -144,8 +140,7 @@ const getJCode = (id) => async(dispatch, getState) => {
         dispatch({
             type: JCODE_GET_FAIL,
             payload: error.response && error.response.data.message ?
-                error.response.data.message :
-                error.message,
+                error.response.data.message : error.message,
         });
     }
 };
