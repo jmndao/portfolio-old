@@ -3,16 +3,19 @@ import { Link } from "react-router-dom";
 import { Menu } from "antd";
 import { FundProjectionScreenOutlined, MessageOutlined, SettingOutlined, UserOutlined, CodeOutlined } from "@ant-design/icons";
 import SubMenu from "antd/lib/menu/SubMenu";
+import { useDispatch } from "react-redux";
+import { logout } from "../actions/user.action";
 
 const Admin = () => {
+    const dispatch = useDispatch();
 
-    const handleClick = e => {
-        console.log("Clicked ", e);
+    const logoutHandler = () => {
+        dispatch(logout());
     }
+
     return (
         <div>
             <Menu
-                onClick={handleClick}
                 style={{ width: 256 }}
                 defaultSelectedKeys={['1']}
                 defaultOpenKeys={['1']}
@@ -42,14 +45,15 @@ const Admin = () => {
                             All JCodes
                         </Link>
                     </Menu.Item>
-                    <Menu.Item key="3">
+                    <Menu.Item key="6">
                         <Link to='/admin/jcodes/new'>
                             New JCode
                         </Link>
                     </Menu.Item>
                 </SubMenu>
                 <SubMenu key="sub3" icon={<SettingOutlined />} title="Settings">
-                    <Menu.Item key="4">My Espace</Menu.Item>
+                    <Menu.Item key="7">My Espace</Menu.Item>
+                    <Menu.Item key="8" onClick={logoutHandler}>Logout</Menu.Item>
                 </SubMenu>
             </Menu>
         </div>

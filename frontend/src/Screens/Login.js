@@ -1,7 +1,7 @@
 // import React, { useEffect } from "react";
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, Divider, Input, Form, Checkbox, Spin } from "antd";
+import { Button, Divider, Input, Form, Checkbox, Spin, message } from "antd";
 import { login } from "../actions/user.action";
 
 // const Login = ({ location, history }) => {
@@ -21,14 +21,17 @@ const Login = ({ history }) => {
 
     const onFinish = (values) => {
         // DISPATCH LOGIN
-        if (userInfo) {
-            history.push('/admin');
-        }
         dispatch(login(values.email, values.password));
     };
 
+    useEffect(() => {
+        if (userInfo) {
+            history.push('/admin');
+        }
+    }, [history, userInfo]);
+
     const onFinishFailed = (errorInfo) => {
-        console.log('Failed:', errorInfo);
+        message.error(`Your connection has failed ${errorInfo}`);
     };
 
     return (

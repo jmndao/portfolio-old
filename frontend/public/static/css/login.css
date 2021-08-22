@@ -34,15 +34,14 @@
     margin: 0 20px;
     color: var(--bg);
     border-radius: 5px;
-    min-width: 500px;
+    min-width: 800px;
 }
 
 .login-header {
     text-align: center;
     font-size: 2rem;
     width: 80%;
-    margin: 1rem auto;
-    margin-top: 49px;
+    margin: 0 auto;
     padding-top: 10px;
 }
 

@@ -9,7 +9,7 @@ import Admin from "./Admin";
 import "react-ace-builds/webpack-resolver-min";
 
 
-const AdminJCode = () => {
+const AdminJCode = ({ history }) => {
     const dispatch = useDispatch();
 
     const jcodeList = useSelector(state => state.jcodeList);
@@ -18,12 +18,18 @@ const AdminJCode = () => {
     const jcodeDelete = useSelector(state => state.jcodeDelete);
     const { loading: loadingDelete, error: errorDelete, success } = jcodeDelete;
 
+    const userLogin = useSelector(state => state.userLogin);
+    const { userInfo } = userLogin;
+
     useEffect(() => {
+        if (!userInfo) {
+            history.push('/login');
+        }
         dispatch(listJCode());
         if (success) {
             message.success("Project deleted successfully.");
         }
-    }, [dispatch, success]);
+    }, [dispatch, success, userInfo, history]);
 
     const deleteHandler = (id) => {
         if (window.confirm('Are you sure ?')) {

@@ -9,7 +9,7 @@ import { LoadingOutlined, MinusCircleOutlined, PlusOutlined, UploadOutlined } fr
 import { firebaseRemove, firebaseUpload } from "../actions/about.action";
 import Admin from "./Admin";
 
-const AdminProjectEdit = ({ match }) => {
+const AdminProjectEdit = ({ match, history }) => {
 
     const projectID = match.params.id;
 
@@ -22,17 +22,24 @@ const AdminProjectEdit = ({ match }) => {
     const projectUpdate = useSelector(state => state.projectUpdate);
     const { loading, error, success } = projectUpdate;
 
+    const userLogin = useSelector(state => state.userLogin);
+    const { userInfo } = userLogin;
+
     const handleEditForm = (values) => {
         //console.log(values);
         dispatch(updateProject(values));
     }
 
     useEffect(() => {
+        if (!userInfo) {
+            history.push('/login');
+        }
+
         dispatch(getProject(projectID));
         if (success) {
             message.success('Project updated successfully!');
         }
-    }, [dispatch, projectID, success]);
+    }, [dispatch, projectID, success, history, userInfo]);
 
     const firebaseRemoveHandler = e => {
         dispatch(firebaseRemove(e));

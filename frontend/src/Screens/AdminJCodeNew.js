@@ -7,13 +7,16 @@ import { firebaseRemove, firebaseUpload } from "../actions/about.action";
 import { createJCode } from "../actions/jcode.action";
 
 
-const AdminJCodeNew = () => {
+const AdminJCodeNew = ({ history }) => {
 
     const [createForm] = Form.useForm();
     const dispatch = useDispatch();
 
     const jcodeCreate = useSelector(state => state.jcodeCreate);
     const { loading, error, success } = jcodeCreate;
+
+    const userLogin = useSelector(state => state.userLogin);
+    const { userInfo } = userLogin;
 
     const handleNewJCodeCreation = () => {
         createForm.validateFields().then(
@@ -37,10 +40,13 @@ const AdminJCodeNew = () => {
     }
 
     useEffect(() => {
+        if (!userInfo) {
+            history.push('/login');
+        }
         if (success) {
             message.success('JCode Created successfully');
         }
-    }, [dispatch, success]);
+    }, [dispatch, success, history, userInfo]);
 
     const section = [{
         name: "",

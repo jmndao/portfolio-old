@@ -5,7 +5,7 @@ import { DeleteOutlined, MailOutlined, LoadingOutlined } from "@ant-design/icons
 import { useDispatch, useSelector } from "react-redux";
 import { deleteContact, listContacts } from "../actions/contact.action";
 
-const AdminContact = () => {
+const AdminContact = ({ history }) => {
 
     const dispatch = useDispatch();
 
@@ -15,13 +15,19 @@ const AdminContact = () => {
     const contactDelete = useSelector(state => state.contactDelete);
     const { loading: loadingDelete, error: errorDelete, success } = contactDelete;
 
+    const userLogin = useSelector(state => state.userLogin);
+    const { userInfo } = userLogin;
+
 
     useEffect(() => {
+        if (!userInfo) {
+            history.push('/login');
+        }
         dispatch(listContacts());
         if (success) {
             message.success("Contact deleted successfully.");
         }
-    }, [dispatch, success]);
+    }, [dispatch, success, userInfo, history]);
 
     const deleteHandler = (id) => {
         if (window.confirm('Are you sure ?')) {

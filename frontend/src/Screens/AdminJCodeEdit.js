@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { firebaseRemove, firebaseUpload } from "../actions/about.action";
 import { getJCode, updateJCode } from "../actions/jcode.action";
 
-const AdminJCodeEdit = ({ match }) => {
+const AdminJCodeEdit = ({ match, history }) => {
     const jcodeID = match.params.id;
     const dispatch = useDispatch();
 
@@ -25,13 +25,18 @@ const AdminJCodeEdit = ({ match }) => {
     const firebaseUploadHandler = e => {
         dispatch(firebaseUpload(e))
     }
+    const userLogin = useSelector(state => state.userLogin);
+    const { userInfo } = userLogin;
 
     useEffect(() => {
+        if (!userInfo) {
+            history.push('/login');
+        }
         dispatch(getJCode(jcodeID));
         if (success) {
             message.success('JCode updated successfully.');
         }
-    }, [dispatch, jcodeID, success]);
+    }, [dispatch, jcodeID, success, userInfo, history]);
 
     const handleUpdateJCode = (values) => {
         values = {...values, jcodeID };
