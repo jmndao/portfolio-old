@@ -121,19 +121,7 @@ const getJCode = (id) => async(dispatch, getState) => {
     try {
         dispatch({ type: JCODE_GET_REQUEST });
 
-        // Get admin user token
-        const {
-            userLogin: { userInfo },
-        } = getState();
-
-        const config = {
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${userInfo.token}`,
-            },
-        };
-
-        const { data } = await axios.get(`/api/jcodes/${id}`, config);
+        const { data } = await axios.get(`/api/jcodes/${id}`);
 
         dispatch({ type: JCODE_GET_SUCCESS, payload: data });
     } catch (error) {
