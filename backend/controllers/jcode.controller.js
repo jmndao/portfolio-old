@@ -69,7 +69,6 @@ const deleteJCode = asyncHandler(async(req, res) => {
 const updateJCode = asyncHandler(async(req, res) => {
     // Collect new data from req
     const {
-        _id,
         project,
         description,
         image,
