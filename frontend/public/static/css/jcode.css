@@ -4,7 +4,7 @@
     --header-link-hover: #232B2B;
     --header-link-hover-icon: #eee;
     --timeline-date: #ced4da;
-    --divider: #495057;
+    --divider: #d9dbdd;
     --bg: #232B2B;
     --bg-project: #fff;
     --bg-rgb: 14, 18, 18;
@@ -39,4 +39,31 @@
 .jcode-content {
     width: 95%;
     margin: 1rem auto;
+}
+
+.ace_editor {
+    border-radius: 10px;
+}
+
+.jcode-item-wrapper {
+    background-color: var(--light);
+}
+
+.jcode-item-content {
+    width: 80%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.divider-divider {
+    background-color: var(--divider) !important;
+    width: 60%;
+}
+
+.my-divider {
+    width: 100px;
+    height: 2px;
+    background-color: var(--bg);
+    border-radius: 5px;
+    margin: 20px auto;
 }

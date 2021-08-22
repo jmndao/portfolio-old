@@ -3,7 +3,7 @@ import JCodeSVG from "../images/jcode.svg";
 import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
 import AppMenu from "../components/AppMenu";
 import { Card, Col, Image, Result, Spin, Tooltip } from "antd";
-import { EllipsisOutlined, GithubOutlined, LoadingOutlined, RiseOutlined } from "@ant-design/icons";
+import { EllipsisOutlined, GithubOutlined, LoadingOutlined } from "@ant-design/icons";
 import Meta from "antd/lib/card/Meta";
 import { Fade } from "react-awesome-reveal";
 import { useDispatch, useSelector } from "react-redux";
