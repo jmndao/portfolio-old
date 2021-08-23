@@ -1,3 +1,4 @@
+import path from "path";
 import express from "express";
 import dotenv from "dotenv";
 import colors from "colors";
@@ -20,21 +21,29 @@ const app = express();
 // Enabling Express body parser
 app.use(express.json());
 
-// Set the api entry point
-app.get("/", (req, res) => {
-    res.send("Portfolio API running...");
-});
-
 // Routes
-app.use('/api/users', userRoute);
-app.use('/api/about', aboutRoute);
-app.use('/api/projects', projectRoute);
-app.use('/api/contact', contactRoute);
-app.use('/api/download', homeRoute);
-app.use('/api/jcodes', jcodeRoute);
+app.use("/api/users", userRoute);
+app.use("/api/about", aboutRoute);
+app.use("/api/projects", projectRoute);
+app.use("/api/contact", contactRoute);
+app.use("/api/download", homeRoute);
+app.use("/api/jcodes", jcodeRoute);
 app.use(notFound);
 app.use(errorHandler);
 
+const __dirname = path.resolve();
+
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static(path.join(__dirname, "/frontend/build")));
+    app.get("*", (req, res) =>
+        res.sendFile(path.resolve(__dirname, "frontend", "build", "index"))
+    );
+} else {
+    // Set the api entry point
+    app.get("/", (req, res) => {
+        res.send("Portfolio API running...");
+    });
+}
 
 const PORT = process.env.PORT || 8800;
 

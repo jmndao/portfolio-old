@@ -15,7 +15,7 @@ import {
 import TextLoop from "react-text-loop";
 import { Fade } from "react-awesome-reveal";
 import CodeJ from "../images/code_j.png";
-import Profile from "../images/profile.png";
+import ContactImage from "../images/contact.svg";
 import {
     LinkedinOutlined,
     GithubOutlined,
@@ -34,6 +34,7 @@ import { fetchAbout } from "../actions/about.action";
 import { submitForm } from "../actions/contact.action";
 import { listProjects } from "../actions/project.action";
 import AppMenu from "../components/AppMenu";
+import { Link } from "react-router-dom";
 
 
 const HomeScreen = () => {
@@ -110,7 +111,7 @@ const HomeScreen = () => {
                 currentPage="home"
             />
             <div className="home-app">
-                <Row gutter={16}>
+                <Row gutter={16} className='row-text-img'>
                     <Col sm={24} md={12}>
                         <div className="banner-info">
                             <p>Hello I'm,</p>
@@ -191,9 +192,10 @@ const HomeScreen = () => {
                             </Col>
                             <Col>
                                 {profileInfo.programmingSkill.map((prog) => (
-                                    <Avatar key={prog._id} src={prog.image} className="sm-ml-1" size="large" />
+                                    <Image key={prog._id} src={prog.image} className="sm-ml-1" preview={false} style={{ height: '35px', width: '35px' }} />
                                 ))}
                             </Col>
+                            <div><Link to='/about'>{"{...}"}</Link></div>
                         </Row>
                     </div>
                 </div>
@@ -321,9 +323,9 @@ const HomeScreen = () => {
                             </p>
                         </Col>
                         <Col sm={24} md={12}>
-                            <Fade direction="right">
+                            <Fade>
                                 <Image
-                                    src={Profile}
+                                    src={ContactImage}
                                     width={"100%"}
                                     height={"100%"}
                                     preview={false}

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import JCodeSVG from "../images/jcode.svg";
+import JCodeSVG from "../images/project.svg";
 import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
 import AppMenu from "../components/AppMenu";
 import { Card, Col, Image, Result, Spin, Tooltip } from "antd";

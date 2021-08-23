@@ -156,6 +156,12 @@ ul.ant-menu-overflow.ant-menu.ant-menu-root.ant-menu-horizontal.ant-menu-light.m
     min-height: 100vh;
 }
 
+.home-app .row-text-img {
+    justify-content: center;
+    align-items: center;
+    min-height: 480px;
+}
+
 .home-app .ant-col:first-child {
     display: flex;
     align-items: center;
@@ -365,8 +371,25 @@ ul.ant-menu-overflow.ant-menu.ant-menu-root.ant-menu-horizontal.ant-menu-light.m
     color: #232B2B;
 }
 
+.app-footer.light {
+    color: var(--light);
+}
+
 .center-footer {
     text-align: center;
+}
+
+.footer-list {
+    list-style: none;
+    font-size: 16px;
+    line-height: 28px;
+    padding-left: 10px;
+}
+
+.footer-list li:hover {
+    color: var(--bg);
+    transition: color 200ms ease;
+    cursor: pointer;
 }
 
 .app-footer .socials {

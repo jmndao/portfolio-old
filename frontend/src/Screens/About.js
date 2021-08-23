@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Col, Row, Avatar, Timeline, Divider, Card, Rate, Spin, Result, Button } from "antd";
+import { Col, Row, Avatar, Timeline, Divider, Rate, Spin, Result, Button, Space, Image } from "antd";
 import { Fade } from "react-awesome-reveal";
 import { CodeOutlined, FundProjectionScreenOutlined, GlobalOutlined, HeartFilled, ProjectOutlined, RiseOutlined, UserOutlined } from "@ant-design/icons";
 import AppFooter from "../components/AppFooter";
@@ -23,7 +23,7 @@ const About = () => {
 
     return (
         <>
-            <AppMenu 
+            <AppMenu
                 currentPage="about"
             />
             <div className='about-screen'>
@@ -92,7 +92,28 @@ const About = () => {
                                                         <div className='under-frac'></div>
                                                     </span>
                                                 </div>
-                                                <Row justify='center' align='middle' gutter={[8, 16]} className='mt-1'>
+                                                <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+                                                    {profileInfo.programmingSkill.map((prog) => (
+                                                        <Col className="gutter-row mt-1" span={6} >
+                                                            <Space>
+                                                                <Image src={prog.image} style={{ width: '50px', height: '50px'}} />
+                                                                <div>{prog.language}</div>
+                                                            </Space>
+                                                        </Col>
+                                                    ))}
+                                                </Row>
+                                                <Divider orientation="left" style={{ backgroundColor: '#eee', width: '50px'}} />
+                                                <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+                                                    {profileInfo.otherSkill.map((other) => (
+                                                        <Col className="gutter-row mt-1" span={6} >
+                                                            <Space>
+                                                                <Image preview={false} src={other.image} style={{ width: '50px', height: '50px'}} />
+                                                                <div>{other.language}</div>
+                                                            </Space>
+                                                        </Col>
+                                                    ))}
+                                                </Row>
+                                                {/* <Row justify='center' align='middle' gutter={[8, 16]} className='mt-1'>
                                                     {profileInfo.programmingSkill.map((prog) => (
                                                         <Col sm={24} md={12}>
                                                             <Card>
@@ -104,7 +125,7 @@ const About = () => {
                                                             </Card>
                                                         </Col>
                                                     ))}
-                                                </Row>
+                                                </Row> */}
                                             </Timeline.Item>
                                             <Timeline.Item>
                                                 <div className='app-header light left'>
@@ -163,7 +184,7 @@ const About = () => {
                                         </Fade>
                                     </Timeline>
                                 )}
-                            <AppFooter />
+                            <AppFooter light={true} />
                         </div>
                     </div>
                 </div>

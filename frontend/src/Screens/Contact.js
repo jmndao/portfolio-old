@@ -142,12 +142,9 @@ const Contact = () => {
                                         </Form>
                                     </div>
                                 </div>
-                                <AppFooter />
-
+                                <AppFooter light={true} />
                             </div>
-
                         </div>
-
                     </div>
                 </div>
             </div>
