@@ -40,10 +40,10 @@ const Jcode = () => {
         </Parallax>
         <div className='jcode-text-content'>
           <span className='jcode-text-content-h'>
-            JCode Projects ...
+            Learn to code with me
           </span>
           <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad, alias iusto sint dolor sed veritatis.
+            JCode is a space where we can tackle different code subject of different programming Language with me.
           </p>
         </div>
         <div className="jcode-content">

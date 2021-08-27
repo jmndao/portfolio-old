@@ -96,7 +96,7 @@ const About = () => {
                                                     {profileInfo.programmingSkill.map((prog) => (
                                                         <Col className="gutter-row mt-1" span={6} >
                                                             <Space>
-                                                                <Image src={prog.image} style={{ width: '50px', height: '50px'}} />
+                                                                <Image preview={false} src={prog.image} style={{ width: '50px', height: '50px'}} />
                                                                 <div>{prog.language}</div>
                                                             </Space>
                                                         </Col>
@@ -108,7 +108,7 @@ const About = () => {
                                                         <Col className="gutter-row mt-1" span={6} >
                                                             <Space>
                                                                 <Image preview={false} src={other.image} style={{ width: '50px', height: '50px'}} />
-                                                                <div>{other.language}</div>
+                                                                <div>{other.name}</div>
                                                             </Space>
                                                         </Col>
                                                     ))}

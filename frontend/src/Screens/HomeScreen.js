@@ -14,7 +14,7 @@ import {
 } from "antd";
 import TextLoop from "react-text-loop";
 import { Fade } from "react-awesome-reveal";
-import CodeJ from "../images/code_j.png";
+import CodeJ from "../images/CodeJ_500x500.png";
 import ContactImage from "../images/contact.svg";
 import {
     LinkedinOutlined,
@@ -137,8 +137,8 @@ const HomeScreen = () => {
                         <Fade direction="right">
                             <Image
                                 src={CodeJ}
-                                width={"100%"}
-                                height={"100%"}
+                                width={"500"}
+                                height={"500"}
                                 preview={false}
                                 className="home-image"
                             />

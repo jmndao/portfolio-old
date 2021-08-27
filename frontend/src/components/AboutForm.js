@@ -9,6 +9,8 @@ const AboutForm = () => {
 
     const dispatch = useDispatch();
 
+    const [aboutForm] = Form.useForm();
+
     const getAbout = useSelector(state => state.getAbout);
     const { loading, error, profileInfo } = getAbout;
 
@@ -16,7 +18,7 @@ const AboutForm = () => {
     //const { onProgress, uploadError, onComplete, fileUrl, id } = firebaseUploader;
 
     const aboutUpdate = useSelector(state => state.aboutUpdate)
-    const { loading: loadingUpdate, success, error:errorUpdate } = aboutUpdate;
+    const { loading: loadingUpdate, success, error: errorUpdate } = aboutUpdate;
 
     const onFinishFailed = () => {
         console.log('Form Submission failed');
@@ -30,7 +32,21 @@ const AboutForm = () => {
         dispatch(firebaseUpload(e))
     }
 
+    const normFile = (e) => {
+        console.log(e);
+        if (Array.isArray(e)) {
+            return e;
+        }
+        if (e.file.status === 'done') {
+            console.log('Here')
+            return e.file.response;
+        } else {
+            return e && e.file
+        }
+    }
+
     const onFinish = (values) => {
+        console.log(values);
         dispatch(updateAbout(values));
     }
 
@@ -44,16 +60,32 @@ const AboutForm = () => {
 
     return (
         <>
-            { loading || loadingUpdate ? <Spin tip='Loading...' /> : error || errorUpdate ? (
+            {loading || loadingUpdate ? <Spin tip='Loading...' /> : error || errorUpdate ? (
                 <div className='contact-error'>{error || errorUpdate}</div>)
                 : (
-                    <Form name='aboutForm' onFinish={onFinish} onFinishFailed={onFinishFailed}>
+                    <Form form={aboutForm} onFinish={onFinish} onFinishFailed={onFinishFailed}>
                         <fieldset>
                             <legend>About</legend>
                             <Form.Item name="about" initialValue={profileInfo.about}>
                                 <Input.TextArea />
                             </Form.Item>
                         </fieldset>
+                        {/* <fieldset>
+                            <legend>Profile Image</legend>
+                            <Form.Item
+                                name={"profile"}
+                            >
+                                <Upload
+                                    customRequest={(e) => firebaseUploadHandler(e)}
+                                    onRemove={(e) => firebaseRemoveHandler(e)}
+                                    valuePropName="file"
+                                    getValueFromEvent={(e) => normFile(e)}
+                                >
+                                    <Button icon={<UploadOutlined />}>Click to Upload</Button>
+                                </Upload>
+
+                            </Form.Item>
+                        </fieldset> */}
                         <fieldset>
                             <legend>Educations</legend>
                             {profileInfo && (<Form.List name="education" initialValue={profileInfo.education}>
@@ -108,6 +140,8 @@ const AboutForm = () => {
                                                         <Upload
                                                             customRequest={(e) => firebaseUploadHandler(e)}
                                                             onRemove={(e) => firebaseRemoveHandler(e)}
+                                                            valuePropName="file"
+                                                            getValueFromEvent={(e) => normFile(e)}
                                                         >
                                                             <Button icon={<UploadOutlined />}>Click to Upload</Button>
                                                         </Upload>
@@ -144,10 +178,12 @@ const AboutForm = () => {
                                                         name={[name, "flag"]}
                                                         fieldKey={[fieldKey, "flag"]}
                                                     >
-                                                        <Upload 
+                                                        <Upload
                                                             name='flag'
                                                             customRequest={(e) => firebaseUploadHandler(e)}
                                                             onRemove={(e) => firebaseRemoveHandler(e)}
+                                                            valuePropName="file"
+                                                            getValueFromEvent={(e) => normFile(e)}
                                                         >
                                                             <Button icon={<UploadOutlined />}>Click to Upload</Button>
                                                         </Upload>
@@ -182,11 +218,15 @@ const AboutForm = () => {
                                                     <Form.Item
                                                         name={[name, "image"]}
                                                         fieldKey={[fieldKey, "image"]}
+                                                        valuePropName="file"
+                                                        getValueFromEvent={(e) => normFile(e)}
                                                     >
-                                                        <Upload 
+                                                        <Upload
                                                             name='image'
                                                             customRequest={(e) => firebaseUploadHandler(e)}
                                                             onRemove={(e) => firebaseRemoveHandler(e)}
+                                                            onChange={(e) => console.log("Change ", e)}
+                                                            onDrop={(e) => console.log("Drop: ", e)}
                                                         >
                                                             <Button icon={<UploadOutlined />}>Click to Upload</Button>
                                                         </Upload>
@@ -299,8 +339,10 @@ const AboutForm = () => {
                                                     <Form.Item
                                                         name={[name, "image"]}
                                                         fieldKey={[fieldKey, "image"]}
+                                                        valuePropName="file"
+                                                        getValueFromEvent={(e) => normFile(e)}
                                                     >
-                                                        <Upload 
+                                                        <Upload
                                                             name='image'
                                                             customRequest={(e) => firebaseUploadHandler(e)}
                                                             onRemove={(e) => firebaseRemoveHandler(e)}

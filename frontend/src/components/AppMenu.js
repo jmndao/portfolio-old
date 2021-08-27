@@ -1,5 +1,5 @@
 import React from "react";
-import LogoNav from "../images/jlogo.svg";
+import LogoNav from "../images/jLogo_500x500.svg";
 import { Link } from "react-router-dom";
 import { Button, Menu } from "antd";
 import { UnorderedListOutlined } from "@ant-design/icons";
@@ -30,7 +30,7 @@ const AppMenu = ({ currentPage }) => {
                 </Menu.Item>
                 <Menu.Item key="about">
                     <Link to="/about">
-                        {"{"} About {"}"}
+                        {"{"} ...About {"}"}
                     </Link>
                 </Menu.Item>
                 <Menu.Item key="projects">
@@ -40,7 +40,7 @@ const AppMenu = ({ currentPage }) => {
                 </Menu.Item>
                 <Menu.Item key="contact">
                     <Link to="/contact">
-                        {"{"} ...Contacts {"}"}
+                        {"{"} Contact {"}"}
                     </Link>
                 </Menu.Item>
                 <Menu.Item key="jCode">
