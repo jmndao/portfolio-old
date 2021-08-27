@@ -28,8 +28,6 @@ app.use("/api/projects", projectRoute);
 app.use("/api/contact", contactRoute);
 app.use("/api/download", homeRoute);
 app.use("/api/jcodes", jcodeRoute);
-app.use(notFound);
-app.use(errorHandler);
 
 const __dirname = path.resolve();
 
@@ -44,6 +42,9 @@ if (process.env.NODE_ENV === "production") {
         res.send("Portfolio API running...");
     });
 }
+
+app.use(notFound);
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 8800;
 
