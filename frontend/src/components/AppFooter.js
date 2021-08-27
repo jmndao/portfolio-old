@@ -17,16 +17,16 @@ const AppFooter = ({ light }) => {
                                 preview={false}
                             />
                             <div className="socials">
-                                <a href="http://" target="_blank" rel="noopener noreferrer">
+                                <a href={"//github.com/jmndao"} target="_blank" rel="noopener noreferrer">
                                     <GithubFilled />
                                 </a>
-                                <a href="http://" target="_blank" rel="noopener noreferrer">
+                                <a href={"//www.linkedin.com/in/jmndao/"} target="_blank" rel="noopener noreferrer">
                                     <LinkedinFilled />
                                 </a>
-                                <a href="http://" target="_blank" rel="noopener noreferrer">
+                                <a href={"//twitter.com/jmndao"} target="_blank" rel="noopener noreferrer">
                                     <TwitterCircleFilled />
                                 </a>
-                                <a href="http://" target="_blank" rel="noopener noreferrer">
+                                <a href={"//www.youtube.com/channel/UCds3nWOH0NHXaIMhyHvxo8w"} target="_blank" rel="noopener noreferrer">
                                     <YoutubeFilled />
                                 </a>
                             </div>

@@ -130,10 +130,10 @@ const HomeScreen = () => {
                             </TextLoop>{" "}
                             <p>Stay Connected</p>
                             <p>
-                                <a href="#!">
+                                <a href={"//www.linkedin.com/in/jmndao/"} target='_blank' rel="noreferrer">
                                     <LinkedinOutlined />
                                 </a>
-                                <a href="#!">
+                                <a href={"//github.com/jmndao"} target='_blank' rel="noreferrer">
                                     <GithubOutlined />
                                 </a>
                             </p>
