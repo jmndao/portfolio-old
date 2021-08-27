@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Helmet } from "react-helmet";
 import { Avatar, Divider, Image, Spin, Tooltip } from "antd";
 import AceEditor from "react-ace-builds";
 import { Parallax, ParallaxProvider } from "react-scroll-parallax";
@@ -35,6 +36,11 @@ const JcodeItem = ({ match }) => {
                 ) : error ? (<div className='contact-error'>{error}</div>)
                     : (
                         <>
+                            <Helmet>
+                                <title>JCode | {jcode ? `${jcode.project}` : "Learn to code"}</title>
+                                <meta name='description' content='JCode: learn to code with Jmndao' />
+                                <meta name='keywords' content='code, learn programming, becoming software developer, learn python, learn js, learn react' />
+                            </Helmet>
                             <Parallax className="custom-class" y={[20, -20]} tagOuter="figure">
                                 <div className="jcode-top-img">
                                     <Image

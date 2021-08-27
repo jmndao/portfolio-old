@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Helmet } from "react-helmet";
 import JCodeSVG from "../images/project.svg";
 import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
 import AppMenu from "../components/AppMenu";
@@ -23,6 +24,11 @@ const Jcode = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Jmndao Portfolio | JCode</title>
+        <meta name='description' content='JCode: learn to code with Jmndao' />
+        <meta name='keywords' content='code, learn programming, becoming software developer, learn python, learn js, learn react' />
+      </Helmet>
       <AppMenu
         currentPage="jCode"
       />
@@ -66,7 +72,7 @@ const Jcode = () => {
                       }
                       actions={[
                         <Tooltip placement="bottom" title="Github">
-                          
+
                           <a href={jcode.link} target="_blank" rel="noreferrer">
                             <GithubOutlined key="setting" />
                           </a>

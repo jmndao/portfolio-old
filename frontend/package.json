@@ -18,6 +18,7 @@
         "react-ace-builds": "^7.3.6",
         "react-awesome-reveal": "^3.8.1",
         "react-dom": "^17.0.2",
+        "react-helmet": "^6.1.0",
         "react-router-dom": "^5.2.0",
         "react-scripts": "4.0.3",
         "react-scroll-parallax": "^2.4.0",

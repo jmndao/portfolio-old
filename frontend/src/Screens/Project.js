@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Helmet } from "react-helmet";
 import { Button, List, Result, Space, Spin, Tooltip, Avatar } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { ForkOutlined, RiseOutlined, CodeOutlined } from "@ant-design/icons";
@@ -27,6 +28,11 @@ const Project = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Jmndao Portfolio | Project</title>
+                <meta name='description' content='Jonathan Moussa NDAO Projects' />
+                <meta name='keywords' content='Jonathan Moussa NDAO works, Jonathan Moussa NDAO projects, Jmndao works, projects, works' />
+            </Helmet>
             <AppMenu 
                 currentPage="projects"
             />

@@ -13,6 +13,7 @@ import {
     Spin,
 } from "antd";
 import TextLoop from "react-text-loop";
+import { Helmet } from "react-helmet";
 import { Fade } from "react-awesome-reveal";
 import CodeJ from "../images/CodeJ_500x500.png";
 import ContactImage from "../images/contact.svg";
@@ -107,6 +108,11 @@ const HomeScreen = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Jmndao Portfolio | Home</title>
+                <meta name='description' content='Jonathan Moussa NDAO Portfolio' />
+                <meta name='keywords' content='Jonathan Moussa NDAO, Jmndao, Portfolio' />
+            </Helmet>
             <AppMenu 
                 currentPage="home"
             />
@@ -317,9 +323,8 @@ const HomeScreen = () => {
 
                             <Divider style={{ backgroundColor: "#eee" }} />
                             <p className="after-form-text">
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                                Possimus recusandae pariatur fuga distinctio mollitia voluptate
-                                dicta illo dolores sit facere.
+                                I am open to any suggestion or idea of collaboration just focus your 
+                                keyboard in those white boxes below. Thanks
                             </p>
                         </Col>
                         <Col sm={24} md={12}>

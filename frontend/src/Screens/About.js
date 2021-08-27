@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import { useDispatch, useSelector } from "react-redux";
 import { Col, Row, Avatar, Timeline, Divider, Rate, Spin, Result, Button, Space, Image } from "antd";
 import { Fade } from "react-awesome-reveal";
@@ -23,6 +24,11 @@ const About = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Jmndao Portfolio | About</title>
+                <meta name='description' content='Learn more about Jmndao' />
+                <meta name='keywords' content='Jonathan Moussa NDAO profile, Jmndao profile, my profile, Jmndao' />
+            </Helmet>
             <AppMenu
                 currentPage="about"
             />

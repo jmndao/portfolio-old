@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Helmet } from "react-helmet";
 import { Row, Col, Form, Input, Button, notification, Spin, Card, Space } from "antd";
 import { SendOutlined, ContactsOutlined, AimOutlined } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
@@ -61,6 +62,11 @@ const Contact = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Jmndao Portfolio | Contact</title>
+                <meta name='description' content='Send me a message' />
+                <meta name='keywords' content='Contact Jonathan Moussa NDAO, jmndao, send jmndao' />
+            </Helmet>
             <AppMenu
                 currentPage="contact"
             />
