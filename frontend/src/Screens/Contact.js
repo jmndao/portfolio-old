@@ -61,7 +61,7 @@ const Contact = () => {
 
     return (
         <>
-            <AppMenu 
+            <AppMenu
                 currentPage="contact"
             />
             <div className="contact-screen">
@@ -76,7 +76,7 @@ const Contact = () => {
                                             text="Contact"
                                             key="list-vertical-like-o"
                                         />
-                                        <p className="contact-card-content">+221 77 xxx xx xx</p>
+                                        <p className="contact-card-content">+221 77 640 96 12</p>
                                     </Card>
                                 </Col>
                                 <Col sm={24} md={12}>

@@ -18,17 +18,20 @@ const AdminJCodeNew = ({ history }) => {
     const userLogin = useSelector(state => state.userLogin);
     const { userInfo } = userLogin;
 
-    const handleNewJCodeCreation = () => {
-        createForm.validateFields().then(
-            (values) => {
-                values = {
-                    ...values,
-                    'image': values['image'].file.response,
-                };
-                createForm.resetFields();
-                dispatch(createJCode(values));
-            }
-        ).catch(err => console.log(err))
+    const normFile = (e) => {
+        if (Array.isArray(e)) {
+            return e;
+        }
+        if (e.file.status === 'done') {
+            return e.file.response;
+        } else {
+            return e && e.file
+        }
+    }
+
+    const handleNewJCodeCreation = (values) => {
+        dispatch(createJCode(values));
+        createForm.resetFields();
     };
 
     const firebaseRemoveHandler = e => {
@@ -84,12 +87,14 @@ const AdminJCodeNew = ({ history }) => {
                             </fieldset>
                             <Form.Item
                                 name="image"
+                                valuePropName="file"
+                                getValueFromEvent={(e) => normFile(e)}
                             >
                                 <Upload
-                                    name='image'
-                                    placeholder='Image'
+                                    name="image"
+                                    placeholder="Image"
                                     customRequest={(e) => firebaseUploadHandler(e)}
-                                    onRemove={(e) => firebaseRemoveHandler(e)}
+                                    onRemove={(e) => firebaseRemoveHandler(e)} 
                                 >
                                     <Button icon={<UploadOutlined />}>Click to Upload</Button>
                                 </Upload>
@@ -118,33 +123,33 @@ const AdminJCodeNew = ({ history }) => {
                                                             <Input.TextArea placeholder='Code' />
                                                         </Form.Item>
                                                         <div className='inner-form-list-item'>
-                                                        <fieldset>
-                                                            <legend>Links</legend>
-                                                            <Form.List name="links" initialValue={links}>
-                                                                {(fields, { add, remove }) => {
-                                                                    return (
-                                                                        <>
-                                                                            {fields.map(({ key, name, fieldKey, ...restField }) => (
-                                                                                <Space key={key} style={{ display: 'flex', marginBottom: 8, justifyContent: 'space-between' }} align='start'>
-                                                                                    <Form.Item name={[name, "url"]} fieldKey={[fieldKey, "url"]}>
-                                                                                        <Input placeholder='Url' />
-                                                                                    </Form.Item>
-                                                                                    <Form.Item label="Video" name="video">
-                                                                                        <Switch defaultChecked={true} />
-                                                                                    </Form.Item>
-                                                                                    <MinusCircleOutlined onClick={() => remove(name)} />
-                                                                                </Space>
-                                                                            ))}
-                                                                            <Form.Item>
-                                                                                <Button type="dashed" onClick={() => add()} block icon={<PlusOutlined />}>
-                                                                                    Add field
-                                                                                </Button>
-                                                                            </Form.Item>
-                                                                        </>
-                                                                    )
-                                                                }}
-                                                            </Form.List>
-                                                        </fieldset>
+                                                            <fieldset>
+                                                                <legend>Links</legend>
+                                                                <Form.List name="links" initialValue={links}>
+                                                                    {(fields, { add, remove }) => {
+                                                                        return (
+                                                                            <>
+                                                                                {fields.map(({ key, name, fieldKey, ...restField }) => (
+                                                                                    <Space key={key} style={{ display: 'flex', marginBottom: 8, justifyContent: 'space-between' }} align='start'>
+                                                                                        <Form.Item name={[name, "url"]} fieldKey={[fieldKey, "url"]}>
+                                                                                            <Input placeholder='Url' />
+                                                                                        </Form.Item>
+                                                                                        <Form.Item label="Video" name="video">
+                                                                                            <Switch defaultChecked={true} />
+                                                                                        </Form.Item>
+                                                                                        <MinusCircleOutlined onClick={() => remove(name)} />
+                                                                                    </Space>
+                                                                                ))}
+                                                                                <Form.Item>
+                                                                                    <Button type="dashed" onClick={() => add()} block icon={<PlusOutlined />}>
+                                                                                        Add field
+                                                                                    </Button>
+                                                                                </Form.Item>
+                                                                            </>
+                                                                        )
+                                                                    }}
+                                                                </Form.List>
+                                                            </fieldset>
                                                         </div>
                                                         <DeleteOutlined onClick={() => remove(name)} />
                                                     </Space>

@@ -30,6 +30,18 @@ const AdminProjectEdit = ({ match, history }) => {
         dispatch(updateProject(values));
     }
 
+    const normFile = (e) => {
+        if (Array.isArray(e)) {
+            return e;
+        }
+        if (e.file.status === 'done') {
+            return e.file.response;
+        } else {
+            return e && e.file
+        }
+    }
+
+
     useEffect(() => {
         if (!userInfo) {
             history.push('/login');
@@ -68,6 +80,8 @@ const AdminProjectEdit = ({ match, history }) => {
                                         <Form.Item
                                             name={"image"}
                                             label="Image"
+                                            valuePropName="file"
+                                            getValueFromEvent={(e) => normFile(e)}
                                         >
                                             <Upload
                                                 name='image'
@@ -88,10 +102,10 @@ const AdminProjectEdit = ({ match, history }) => {
                                         </Form.Item>
                                         <Form.Item label="Done" name="doneAt">
                                             <ConfigProvider locale={locale}>
-                                                { project && <DatePicker  
+                                                {project && <DatePicker
                                                     defaultValue={moment(project.doneAt, defaultFormat)}
                                                     format={defaultFormat}
-                                                /> }
+                                                />}
                                             </ConfigProvider>;
                                         </Form.Item>
                                         <Form.Item label="Website Link" name="website">
@@ -114,6 +128,8 @@ const AdminProjectEdit = ({ match, history }) => {
                                                                     <Form.Item
                                                                         name={[name, "image"]}
                                                                         fieldKey={[fieldKey, "image"]}
+                                                                        valuePropName="file"
+                                                                        getValueFromEvent={(e) => normFile(e)}
                                                                     >
                                                                         <Upload
                                                                             name='image'

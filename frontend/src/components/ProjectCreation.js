@@ -23,13 +23,23 @@ const ProjectCreation = () => {
 
     const [createForm] = Form.useForm();
 
+    const normFile = (e) => {
+        if (Array.isArray(e)) {
+            return e;
+        }
+        if (e.file.status === 'done') {
+            return e.file.response;
+        } else {
+            return e && e.file
+        }
+    }
+
     const handleNewProjectCreation = () => {
         createForm.validateFields().then(
             (values) => {
                 values = {
                     ...values,
                     'doneAt': values['doneAt'].format('YYYY-MM-DD'),
-                    'image': values['image'].file.response,
                 };
                 createForm.resetFields();
                 dispatch(createProject(values));
@@ -69,6 +79,8 @@ const ProjectCreation = () => {
                     <Form.Item
                         name={"image"}
                         label="Image"
+                        valuePropName="file"
+                        getValueFromEvent={(e) => normFile(e)}
                     >
                         <Upload
                             name='image'
@@ -110,6 +122,8 @@ const ProjectCreation = () => {
                                                 <Form.Item
                                                     name={[name, "image"]}
                                                     fieldKey={[fieldKey, "image"]}
+                                                    valuePropName="file"
+                                                    getValueFromEvent={(e) => normFile(e)}
                                                 >
                                                     <Upload
                                                         name='image'

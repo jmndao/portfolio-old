@@ -94,8 +94,8 @@ const About = () => {
                                                 </div>
                                                 <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
                                                     {profileInfo.programmingSkill.map((prog) => (
-                                                        <Col className="gutter-row mt-1" span={6} >
-                                                            <Space>
+                                                        <Col className="gutter-row mt-1" sm={8} md={6} >
+                                                            <Space direction='vertical'>
                                                                 <Image preview={false} src={prog.image} style={{ width: '50px', height: '50px'}} />
                                                                 <div>{prog.language}</div>
                                                             </Space>
@@ -105,8 +105,8 @@ const About = () => {
                                                 <Divider orientation="left" style={{ backgroundColor: '#eee', width: '50px'}} />
                                                 <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
                                                     {profileInfo.otherSkill.map((other) => (
-                                                        <Col className="gutter-row mt-1" span={6} >
-                                                            <Space>
+                                                        <Col className="gutter-row mt-1" sm={8} md={6} >
+                                                            <Space direction='vertical'>
                                                                 <Image preview={false} src={other.image} style={{ width: '50px', height: '50px'}} />
                                                                 <div>{other.name}</div>
                                                             </Space>

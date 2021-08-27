@@ -66,7 +66,8 @@ const Jcode = () => {
                       }
                       actions={[
                         <Tooltip placement="bottom" title="Github">
-                          <a href={jcode.link}>
+                          
+                          <a href={jcode.link} target="_blank" rel="noreferrer">
                             <GithubOutlined key="setting" />
                           </a>
                         </Tooltip>,
