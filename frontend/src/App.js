@@ -1,23 +1,23 @@
 import React from "react";
 import 'antd/dist/antd.css';
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import HomeScreen from "./screens/HomeScreen";
-import About from "./screens/About";
-import Project from "./screens/Project";
-import Contact from "./screens/Contact";
-import Jcode from "./screens/Jcode";
+import HomeScreen from "./Screens/HomeScreen";
+import About from "./Screens/About";
+import Project from "./Screens/Project";
+import Contact from "./Screens/Contact";
+import Jcode from "./Screens/Jcode";
 import { BackTop } from "antd";
-import Login from "./screens/Login";
-import AdminProject from "./screens/AdminProject";
-import AdminProjectNew from "./screens/AdminProjectNew";
-import AdminProjectEdit from "./screens/AdminProjectEdit";
-import AdminContact from "./screens/AdminContact";
-import AdminJCode from "./screens/AdminJCode";
-import AdminJCodeNew from "./screens/AdminJCodeNew";
-import AdminJCodeEdit from "./screens/AdminJCodeEdit";
-import Settings from "./screens/Settings";
-import AdminAbout from "./screens/AdminAbout";
-import JcodeItem from "./screens/JcodeItem";
+import Login from "./Screens/Login";
+import AdminProject from "./Screens/AdminProject";
+import AdminProjectNew from "./Screens/AdminProjectNew";
+import AdminProjectEdit from "./Screens/AdminProjectEdit";
+import AdminContact from "./Screens/AdminContact";
+import AdminJCode from "./Screens/AdminJCode";
+import AdminJCodeNew from "./Screens/AdminJCodeNew";
+import AdminJCodeEdit from "./Screens/AdminJCodeEdit";
+import Settings from "./Screens/Settings";
+import AdminAbout from "./Screens/AdminAbout";
+import JcodeItem from "./Screens/JcodeItem";
 
 function App() {
   return (
