@@ -1,5 +1,6 @@
 // import React, { useEffect } from "react";
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Button, Divider, Input, Form, Checkbox, Spin, message } from "antd";
 import { login } from "../actions/user.action";
@@ -8,16 +9,8 @@ import { login } from "../actions/user.action";
 const Login = ({ history }) => {
     const dispatch = useDispatch();
 
-    // const redirect = location.search ? location.search.split("=")[1] : "/";
-
     const userLogin = useSelector(state => state.userLogin);
     const { loading, error, userInfo } = userLogin;
-
-    // useEffect(() => {
-    //     if (userInfo) {
-    //       history.push(redirect);
-    //     }
-    //   }, [history, userInfo, redirect]);
 
     const onFinish = (values) => {
         // DISPATCH LOGIN
@@ -95,6 +88,7 @@ const Login = ({ history }) => {
                             <Button type="primary" htmlType="submit">
                                 Submit
                             </Button>
+                            <p>Go Back to <Link to='/home'>Home</Link></p>
                         </Form.Item>
                     </Form>
                 </div>
