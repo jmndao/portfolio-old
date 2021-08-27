@@ -4,6 +4,9 @@
     "version": "1.0.0",
     "description": "My Portfolio is the ultimate solution",
     "main": "backend/server.js",
+    "engines": {
+        "node": "14.16.x"
+    },
     "scripts": {
         "setup": "npm install && npm update",
         "start": "node backend/server.js",
