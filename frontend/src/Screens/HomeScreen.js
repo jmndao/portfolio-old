@@ -40,10 +40,10 @@ import { Link } from "react-router-dom";
 
 const HomeScreen = () => {
 
-    const openNotificationWithIcon = (type, text) => {
+    const openNotificationWithIcon = (type, fname, fmessage) => {
         notification[type]({
-            message: "Hi",
-            description: text
+            message: fname ? (`Hi ${fname}`) : (`Hi X`),
+            description: fmessage
         })
     };
 
@@ -82,7 +82,7 @@ const HomeScreen = () => {
         dispatch(listProjects());
     }, [dispatch]);
 
-    const downloadMyResume = () => {
+    const downloadMyResume = (e) => {
         dispatch(downloadResume());
         if (successResume) openNotificationWithIcon('success', "You've successfully downloaded my Resume.");
         if (errorResume) openNotificationWithIcon('error', "Sorry, an unexpected error has occured.")
