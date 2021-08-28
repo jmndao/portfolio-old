@@ -88,7 +88,7 @@ const Login = ({ history }) => {
                             <Button type="primary" htmlType="submit">
                                 Submit
                             </Button>
-                            <p>Go Back to <Link to='/home'>Home</Link></p>
+                            <p>Go Back to <Link to='/'>Home</Link></p>
                         </Form.Item>
                     </Form>
                 </div>
