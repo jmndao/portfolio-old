@@ -6,16 +6,18 @@ import { UnorderedListOutlined } from "@ant-design/icons";
 import Avatar from "antd/lib/avatar/avatar";
 
 const AppMenu = ({ currentPage }) => {
-    
+
 
     return (
         <header className="menu-header">
             <div className="menu-header-brand">
-                <Avatar
-                    src={LogoNav}
-                    shape='square'
-                    size='large'
-                />
+                <Link to='/login'>
+                    <Avatar
+                        src={LogoNav}
+                        shape='square'
+                        size='large'
+                    />
+                </Link>
             </div>
             <Menu
                 selectedKeys={currentPage}

@@ -97,7 +97,7 @@ const HomeScreen = () => {
             setMessage(values.message);
 
             dispatch(submitForm(values.name, values.email, values.message));
-            openNotificationWithIcon('success', values.name, formMessage.message);
+            openNotificationWithIcon('success', values.name, "Thank you, I'll reach you out soon.");
             contactForm.resetFields();
 
         } else {
@@ -323,8 +323,8 @@ const HomeScreen = () => {
 
                             <Divider style={{ backgroundColor: "#eee" }} />
                             <p className="after-form-text">
-                                I am open to any suggestion or idea of collaboration just focus your 
-                                keyboard in those white boxes below. Thanks
+                                I am open to any suggestion or idea for collaboration, just focus your 
+                                keyboard in those white boxes above. 
                             </p>
                         </Col>
                         <Col sm={24} md={12}>

@@ -49,7 +49,7 @@ const Contact = () => {
             setMessage(values.message);
 
             dispatch(submitForm(values.name, values.email, values.message));
-            openNotificationWithIcon('success', values.name, formMessage.message);
+            openNotificationWithIcon('success', values.name, "Thank you, I'll reach you out soon.");
             contactForm.resetFields();
 
             values = {};
