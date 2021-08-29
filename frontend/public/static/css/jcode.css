@@ -12,7 +12,7 @@
 }
 
 .jcode-top-img {
-    height: 500px;
+    height: auto;
     width: 100%;
     background-color: var(--light);
     margin-top: calc(var(--nav-height) - 1px);

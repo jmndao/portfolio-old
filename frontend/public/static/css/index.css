@@ -149,7 +149,7 @@ ul.ant-menu-overflow.ant-menu.ant-menu-root.ant-menu-horizontal.ant-menu-light.m
 .home-app {
     /* position: absolute;
     top: calc(var(--nav-height) - 1px); */
-    padding-bottom: 4.5rem;
+    padding-bottom: 1.5rem;
     padding-top: 4.5rem;
     background-color: #eee;
     width: 100%;
@@ -159,7 +159,7 @@ ul.ant-menu-overflow.ant-menu.ant-menu-root.ant-menu-horizontal.ant-menu-light.m
 .home-app .row-text-img {
     justify-content: center;
     align-items: center;
-    min-height: 480px;
+    min-height: 80vh;
 }
 
 .home-app .ant-col:first-child {
