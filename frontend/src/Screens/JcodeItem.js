@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
+import parse from 'html-react-parser';
 import { Avatar, Divider, Image, Spin, Tooltip } from "antd";
 import AceEditor from "react-ace-builds";
 import { Parallax, ParallaxProvider } from "react-scroll-parallax";
@@ -53,21 +54,23 @@ const JcodeItem = ({ match }) => {
                                 </div>
                             </Parallax>
                             <div className="jcode-item-content">
-                                <h1>Project: {jcode && jcode.project}</h1>
+                                <h1>Tutorial: {jcode && jcode.project}</h1>
                                 <fieldset>
                                     <legend>Description</legend>
-                                    <p>{jcode && jcode.description}</p>
+                                    <p>{jcode && parse(jcode.description)}</p>
                                 </fieldset>
-                                {jcode && jcode.section.map((section, ind) => (
+                                <br />
+                                <br />
+                                {jcode && jcode.section.map((section) => (
                                     <fieldset>
-                                        <h2><span style={{ textDecoration: 'underline' }}>Section {ind}:</span> {section.title}</h2>
+                                        <h2><span style={{ textDecoration: 'underline' }}></span> {section.title}</h2>
                                         <p>{section.text}</p>
                                         <AceEditor
                                             mode={section.mode}
                                             theme='solarized_dark'
-                                            height='100px'
                                             width='100%'
                                             fontSize={16}
+                                            maxLines={Infinity}
                                             readOnly={true}
                                             name={section._id}
                                             value={`${section.code}`}
@@ -85,6 +88,7 @@ const JcodeItem = ({ match }) => {
                                                 }
                                             </div>
                                         ))}
+                                    <br />
                                         <hr className='my-divider' />
                                     </fieldset>
                                 ))}

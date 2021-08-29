@@ -93,7 +93,7 @@ const ProjectCreation = () => {
                     <fieldset>
                         <legend>Description</legend>
                         <Form.Item name="description">
-                            <Input.TextArea />
+                            <Input.TextArea rows='10' />
                         </Form.Item>
                     </fieldset>
                     <Form.Item label="Private" name="private">

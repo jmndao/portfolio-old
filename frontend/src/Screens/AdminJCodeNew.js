@@ -82,7 +82,7 @@ const AdminJCodeNew = ({ history }) => {
                             <fieldset>
                                 <legend>Description</legend>
                                 <Form.Item name="description">
-                                    <Input.TextArea />
+                                    <Input.TextArea rows='10' />
                                 </Form.Item>
                             </fieldset>
                             <Form.Item
@@ -117,10 +117,10 @@ const AdminJCodeNew = ({ history }) => {
                                                             <Input placeholder='Mode' />
                                                         </Form.Item>
                                                         <Form.Item name={[name, "text"]} fieldKey={[fieldKey, "text"]}>
-                                                            <Input.TextArea placeholder='Text' />
+                                                            <Input.TextArea placeholder='Text' rows='8' />
                                                         </Form.Item>
                                                         <Form.Item name={[name, "code"]} fieldKey={[fieldKey, "code"]}>
-                                                            <Input.TextArea placeholder='Code' />
+                                                            <Input.TextArea placeholder='Code' rows='8' />
                                                         </Form.Item>
                                                         <div className='inner-form-list-item'>
                                                             <fieldset>

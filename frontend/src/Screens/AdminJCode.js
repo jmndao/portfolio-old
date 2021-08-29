@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import parse from 'html-react-parser';
 import AceEditor from "react-ace-builds";
 import { Button, List, message, Skeleton, Tooltip, Avatar } from "antd";
 import { DeleteOutlined, EditOutlined, UserOutlined } from "@ant-design/icons";
@@ -47,12 +48,7 @@ const AdminJCode = ({ history }) => {
                         <List
                             itemLayout="vertical"
                             size="large"
-                            pagination={{
-                                onChange: page => {
-                                    console.log(page);
-                                },
-                                pageSize: 3,
-                            }}
+                            pagination={{ pageSize: 3 }}
                             className="demo-loadmore-list"
                             dataSource={jcodes}
                             renderItem={item => (
@@ -77,11 +73,11 @@ const AdminJCode = ({ history }) => {
                                                 <Avatar src={item.image} />
                                             }
                                             title={item.project}
-                                            description={item.description}
+                                            description={parse(item.description)}
                                         />
                                         {item.section.map(section => (
                                             <div>
-                                                {section.text}
+                                                {parse(section.text)}
                                                 <AceEditor
                                                     mode={section.mode}
                                                     theme='solarized_dark'

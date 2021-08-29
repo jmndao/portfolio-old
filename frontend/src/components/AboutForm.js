@@ -64,7 +64,7 @@ const AboutForm = () => {
                         <fieldset>
                             <legend>About</legend>
                             <Form.Item name="about" initialValue={profileInfo.about}>
-                                <Input.TextArea />
+                                <Input.TextArea rows='7' />
                             </Form.Item>
                         </fieldset>
                         <fieldset>

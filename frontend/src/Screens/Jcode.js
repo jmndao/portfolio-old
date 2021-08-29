@@ -86,7 +86,7 @@ const Jcode = () => {
                     >
                       <Meta
                         title={jcode.name}
-                        description={jcode.description}
+                        description={jcode.description.length > 100 ? jcode.description.substring(0, 100) + "..." : jcode.description}
                       />
                     </Card>
                   </Col>

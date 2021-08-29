@@ -13,6 +13,7 @@
         "dropbox": "^10.5.0",
         "file-saver": "^2.0.5",
         "firebase": "^8.9.1",
+        "html-react-parser": "^1.2.8",
         "moment": "^2.29.1",
         "react": "^17.0.2",
         "react-ace-builds": "^7.3.6",

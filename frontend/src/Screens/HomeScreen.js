@@ -235,25 +235,25 @@ const HomeScreen = () => {
                                                 }
                                                 actions={[
                                                     <Tooltip placement="bottom" title="Github">
-                                                        <a href="#!">
+                                                        <a href={p.github}>
                                                             <GithubOutlined key="setting" />
                                                         </a>
                                                     </Tooltip>,
                                                     <Tooltip placement="bottom" title="Website">
-                                                        <a href="#!">
+                                                        <a href={p.website}>
                                                             <RiseOutlined />
                                                         </a>
                                                     </Tooltip>,
                                                     <Tooltip placement="bottom" title="See more">
-                                                        <a href="#!">
+                                                        <Link to='/project'>
                                                             <EllipsisOutlined key="ellipsis" />
-                                                        </a>
+                                                        </Link>
                                                     </Tooltip>,
                                                 ]}
                                             >
                                                 <Meta
                                                     title={p.name}
-                                                    description={p.description}
+                                                    description={p.description.length > 100 ? p.description.substring(0, 100) + "..." : p.description}
                                                 />
                                             </Card>
                                         </Col>
