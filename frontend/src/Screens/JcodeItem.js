@@ -42,7 +42,7 @@ const JcodeItem = ({ match }) => {
                                 <meta name='keywords' content='code, learn programming, becoming software developer, learn python, learn js, learn react' />
                             </Helmet>
                             <Parallax className="custom-class" y={[20, -20]} tagOuter="figure">
-                                <div className="jcode-top-img">
+                                <div className="jcode-top-item-img">
                                     <Image
                                         src={jcode && jcode.image}
                                         width={"100%"}
