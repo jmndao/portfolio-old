@@ -56,7 +56,7 @@ const JcodeItem = ({ match }) => {
                             <div className="jcode-item-content">
                                 <h1>Tutorial: {jcode && jcode.project}</h1>
                                 <fieldset>
-                                    <legend>Description</legend>
+                                    <legend>Introduction</legend>
                                     <p>{jcode && parse(jcode.description)}</p>
                                 </fieldset>
                                 <br />

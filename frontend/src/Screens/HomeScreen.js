@@ -69,6 +69,8 @@ const HomeScreen = () => {
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
 
+    console.log(formMessage && formMessage);
+
     const validateMessages = {
         required: `This field is required!`,
         types: {

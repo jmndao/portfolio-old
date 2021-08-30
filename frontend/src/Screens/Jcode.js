@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
+import parse from 'html-react-parser';
 import JCodeSVG from "../images/project.svg";
 import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
 import AppMenu from "../components/AppMenu";
@@ -86,7 +87,7 @@ const Jcode = () => {
                     >
                       <Meta
                         title={jcode.name}
-                        description={jcode.description.length > 100 ? jcode.description.substring(0, 100) + "..." : jcode.description}
+                        description={jcode.description.length > 100 ? parse(jcode.description.substring(0, 100) + "...") : parse(jcode.description)}
                       />
                     </Card>
                   </Col>
