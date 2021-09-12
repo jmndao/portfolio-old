@@ -4,7 +4,7 @@ import parse from 'html-react-parser';
 import JCodeSVG from "../images/project.svg";
 import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
 import AppMenu from "../components/AppMenu";
-import { Card, Col, Image, Result, Spin, Tooltip } from "antd";
+import { Card, Col, Image, Result, Row, Spin, Tooltip } from "antd";
 import { EllipsisOutlined, GithubOutlined, LoadingOutlined } from "@ant-design/icons";
 import Meta from "antd/lib/card/Meta";
 import { Fade } from "react-awesome-reveal";
@@ -61,37 +61,39 @@ const Jcode = () => {
               subTitle="Sorry, something went wrong."
             /> : (
               <Fade cascade>
-                {jcodes && jcodes.map(jcode => (
-                  <Col sm={12} md={7} key={jcode._id} className="gutter-row m-1">
-                    <Card
-                      style={{ width: 300 }}
-                      cover={
-                        <img
-                          alt={jcode.project}
-                          src={jcode.image}
-                        />
-                      }
-                      actions={[
-                        <Tooltip placement="bottom" title="Github">
+                <Row gutter={[16, 8]}>
+                  {jcodes && jcodes.map(jcode => (
+                    <Col sm={12} md={7} key={jcode._id} className="gutter-row m-1">
+                      <Card
+                        style={{ width: 300 }}
+                        cover={
+                          <img
+                            alt={jcode.project}
+                            src={jcode.image}
+                          />
+                        }
+                        actions={[
+                          <Tooltip placement="bottom" title="Github">
 
-                          <a href={jcode.link} target="_blank" rel="noreferrer">
-                            <GithubOutlined key="setting" />
-                          </a>
-                        </Tooltip>,
-                        <Tooltip placement="bottom" title="See more">
-                          <Link to={`/jCode/${jcode._id}`}>
-                            <EllipsisOutlined key="ellipsis" />
-                          </Link>
-                        </Tooltip>,
-                      ]}
-                    >
-                      <Meta
-                        title={jcode.name}
-                        description={jcode.description.length > 100 ? parse(jcode.description.substring(0, 100) + "...") : parse(jcode.description)}
-                      />
-                    </Card>
-                  </Col>
-                ))}
+                            <a href={jcode.link} target="_blank" rel="noreferrer">
+                              <GithubOutlined key="setting" />
+                            </a>
+                          </Tooltip>,
+                          <Tooltip placement="bottom" title="See more">
+                            <Link to={`/jCode/${jcode._id}`}>
+                              <EllipsisOutlined key="ellipsis" />
+                            </Link>
+                          </Tooltip>,
+                        ]}
+                      >
+                        <Meta
+                          title={jcode.name}
+                          description={jcode.description.length > 100 ? parse(jcode.description.substring(0, 100) + "...") : parse(jcode.description)}
+                        />
+                      </Card>
+                    </Col>
+                  ))}
+                </Row>
               </Fade>
             )
           }

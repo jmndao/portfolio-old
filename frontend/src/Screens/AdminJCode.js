@@ -48,7 +48,7 @@ const AdminJCode = ({ history }) => {
                         <List
                             itemLayout="vertical"
                             size="large"
-                            pagination={{ pageSize: 3 }}
+                            pagination={{ pageSize: 2 }}
                             className="demo-loadmore-list"
                             dataSource={jcodes}
                             renderItem={item => (

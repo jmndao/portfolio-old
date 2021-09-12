@@ -64,7 +64,7 @@ const JcodeItem = ({ match }) => {
                                 {jcode && jcode.section.map((section) => (
                                     <fieldset>
                                         <h2><span style={{ textDecoration: 'underline' }}></span> {section.title}</h2>
-                                        <p>{section.text}</p>
+                                        <p>{ parse(section.text)}</p>
                                         <AceEditor
                                             mode={section.mode}
                                             theme='solarized_dark'
